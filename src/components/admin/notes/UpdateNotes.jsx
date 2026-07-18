@@ -5,67 +5,77 @@ import { Link, useNavigate } from "react-router-dom";
 import GroupServices from "../../../services/GroupServices";
 import CloudinaryServices from "../../../services/CloudinaryServices";
 import CategoryServices from "../../../services/CategoryServices";
+import NotesServices from "../../../services/NotesServices";
 
 
 
 function UpdateNotes(){
-  const [groupName,setGroupName]= useState("");
   const [description,setDescription]=useState("");
-  const [imageUrl,setImageUrl]=useState("");
-  const [image,setImage]=useState();
+  const [title,setTitle]=useState("");
+  const [fileUrl,setFileUrl]=useState();
+  const [group,setGroup]= useState("");
 
-  const [cate,setCate]=useState("");
+  const [groupData,setGroupData]= useState();
   const [data,setData]=useState([]);
 
   const { id } = useParams();
   const nav =useNavigate()
+
+
+  // const [imageUrl,setImageUrl]=useState("");
+  // const [image,setImage]=useState();
+
+  // const [cate,setCate]=useState("");
+  // const [data,setData]=useState([]);
+
+
   
 
   useEffect(()=>{
     fetchData(),
-    fetchDataCategory()
+    fetchGroupData()
   },[]);
 
 
-   const fetchDataCategory=async()=>{
-         let categoryData=  await CategoryServices.All();
-         setData(categoryData);     
-        }
+ const fetchGroupData=async()=>{
+      let grpData= await GroupServices.All()
+       setData(grpData);     
+      }
 
   const fetchData = async()=>{
-    let data= await GroupServices.single(id);
+    let data= await NotesServices.single(id);
     console.log(data);
-    setGroupName(data.groupName);
+    setTitle(data.title);
     setDescription(data.description);
-    setImageUrl(data.image);
-    setCate(data.cate);
+    setFileUrl(data.fileUrl);
+    setGroupData(data.groupData);
 
   }
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
 
-    // let url = await CloudinaryServices.uploadImage(image);
+    // let url = await CloudinaryServices.uploadImage(fileUrl);
     // console.log(url);
 
-    let url =imageUrl;
-    if(!!image){
-    url= await CloudinaryServices.uploadImage(image);
+    let url =fileUrl;
+    if(!!fileUrl){
+    url= await CloudinaryServices.uploadImage(fileUrl);
     }
 
     let data={
-      groupname:groupName,
+     title:title,
       description:description,
-      image:url,
-      cate
+      fileUrl,
+      group
     
     }
     console.log(data);
     
-    let result=await GroupServices.Update(data,id);
+    let result=await NotesServices.Update(data,id);
     if(result==1){
-      toast.success("Group updated successfully");
-      nav("/admin/manageGroup");
+      toast.success("Notes updated successfully");
+      nav("/admin/managenotes");
     }
     else{
       toast.error("DB error");
@@ -97,7 +107,7 @@ function UpdateNotes(){
           <li>
            <Link to="/">Home</Link>
           </li>
-          <li className="current">Update Group
+          <li className="current">Update Notes
             <Link to="/admin/updateGroup"></Link>
           </li>
         </ol>
@@ -127,11 +137,11 @@ function UpdateNotes(){
                   type="text"
                   className="form-control"
                   name="name"
-                  placeholder="Name"
+                  placeholder="Notes"
                   required=""
-                  value={groupName}
+                  value={title}
                   onChange={(e)=>{
-                    setGroupName(e.target.value)
+                    setTitle(e.target.value)
                   }}
                   
                 />
@@ -145,14 +155,14 @@ function UpdateNotes(){
                   required=""
               
                   onChange={(e)=>{
-                    setImage(e.target.files[0]);
+                    setFileUrl(e.target.files[0]);
                   }}
                   
                 />
               </div>
                
 
-               <div className="col-md-8 ">
+               {/* <div className="col-md-8 ">
               
                 <select className="form-control" value={cate} onChange={(el)=>{
                   setCate(el.target.value)
@@ -161,6 +171,20 @@ function UpdateNotes(){
                   {
                     data.map((el)=>{
                      return  <option value={el.id}>{el.categoryName}</option>
+                    } 
+                    )
+                  }
+                </select>
+              </div> */}
+               <div className="col-md-8 ">
+              
+                <select className="form-control" value={group} onChange={(el)=>{
+                  setGroup(el.target.value)
+                }}>
+                  <option >choose one</option>
+                  {
+                    data.map((el)=>{
+                     return  <option value={el.id}>{el.groupName}</option>
                     } 
                     )
                   }

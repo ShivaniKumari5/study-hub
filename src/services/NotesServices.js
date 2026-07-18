@@ -1,4 +1,4 @@
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, getDocs ,doc, getDoc, updateDoc, query, where} from "firebase/firestore";
 import { db } from "../Firebase";
 import { NotesModel } from "../model/NotesModel";
 
@@ -64,5 +64,27 @@ class NotesServices{
               
             }
           }
+
+
+
+   
+       // update
+        async Update(Data,id){
+           try{
+             let obj = new GroupModel();
+             obj.title=Data.title;
+             obj.description=Data.description;
+             obj.fileUrl=Data.fileUrl,
+             obj.groupId=Data.group,
+             
+             await updateDoc(doc(db,dbPath,id),{...obj});
+             return 1;
+       
+           }catch(error){
+             console.log(error);
+             
+           }
+          }
+          
 }
 export default new NotesServices;
