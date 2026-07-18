@@ -7,8 +7,7 @@ import CloudinaryServices from "../../services/CloudinaryServices";
 
 function  Register(){
  
- 
- 
+
  const nav= useNavigate();
  const [name,setName]=useState("");
  const [email, setEmail] = useState("");
@@ -152,7 +151,7 @@ let imageUrl=await CloudinaryServices.uploadImage(profile);
                   required=""
                   
                   onChange={(e)=>{
-                    setProfile(e.target.value);
+                    setProfile(e.target.files[0]);
                   }}
                 />
               </div>

@@ -24,7 +24,7 @@ function UpdateCategory(){
     console.log(data);
     setName(data.categoryName);
     setDescription(data.description);
-    setUrl(data.image)
+    setImageUrl(data.image)
 
   }
 
@@ -50,6 +50,7 @@ function UpdateCategory(){
     let result=await CategoryServices.Update(data,id);
     if(result==1){
       toast.success("Category updated successfully");
+      
     }
     else{
       toast.error("DB error");

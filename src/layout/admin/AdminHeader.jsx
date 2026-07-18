@@ -9,11 +9,7 @@ function AdminHeader(){
 
   const nav =useNavigate();
    let isLogin= AuthServices.getIsLogin();
-   
-
-
-
-
+  
    const logout=()=>{
 
 
@@ -66,9 +62,27 @@ function AdminHeader(){
             </Link>
           </li>
 
+
+          {/* Category Dropdown */}
+    <li className="dropdown">
+      <a href="#">
+        <span>Category</span>
+        <i className="bi bi-chevron-down toggle-dropdown"></i>
+      </a>
+
+      <ul>
+        <li>
+          <Link to="/admin/addcategory">Add Category</Link>
+        </li>
+        <li>
+          <Link to="/admin/manageCategory">Manage Category</Link>
+        </li>
+      </ul>
+    </li>
+
         
-          
-          <li>
+        
+          {/* <li>
             <Link to="/admin/addcategory">Add Category</Link>
           </li>
            
@@ -79,10 +93,42 @@ function AdminHeader(){
             <Link to="/admin/manageCategory">Manage Category</Link>
           </li>
 
-            {
-             isLogin?<li><button onClick={logout} className="btn btn-danger">Logout</button></li>:
+              */}
+            
+
+             <li className="dropdown">
+      <a href="#">
+        <span>Group</span>
+        <i className="bi bi-chevron-down toggle-dropdown"></i>
+      </a>
+
+      <ul>
+        <li>
+          <Link to="/admin/addgroup">Add Group</Link>
+        </li>
+        <li>
+          <Link to="/admin/manageGroup">Manage Group</Link>
+        </li>
+      </ul>
+    </li>
+
+
+
+
+              {/* <li>
+            <Link to="/admin/addgroup">Add group</Link>
+          </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/admin/manageGroup">Manage Group</Link>
+          </li> */}
+          {/* <li>
+            <Link to="/admin/updateGroup">U</Link>
+          </li> */}
+
+            {
+             isLogin?<li><button onClick={logout} className="btn btn-getstarted">Logout</button></li>:
+          <li >
+            <Link  to="/login" >Login</Link>
           </li>
 
           }

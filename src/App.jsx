@@ -16,6 +16,15 @@ import AddProduct from "./components/admin/category/AddProduct";
 import ManageCategory from "./components/admin/category/ManageCategory";
 import UpdateCategory from "./components/admin/category/UpdateCategory";
 import Register from "./components/user/Register";
+import AddGroup from "./components/admin/group/AddGroup";
+import UpdateGroup from "./components/admin/group/UpdateGroup";
+import ManageGroup from "./components/admin/group/ManageGroup";
+import ViewCategory from "./components/user/ViewCategory";
+import ViewGroup from "./components/user/ViewGroup";
+import Pay from "./components/user/Pay";
+import AddNotes from "./components/admin/notes/AddNotes";
+import UpdateNotes from "./components/admin/notes/UpdateNotes";
+import ManageNotes from "./components/admin/notes/ManageNotes";
 
 function App(){
   return(
@@ -31,7 +40,11 @@ function App(){
       <Route path="/pricing" element={<Pricing/>}></Route>
       <Route path="/courses"element={<Courses/>}></Route>
       <Route path="/login" element={<Login/>}></Route>
-      <Route path="/register" element={<Register/>}></Route>      
+      <Route path="/register" element={<Register/>}></Route>
+      <Route path="/viewCategory" element={<ViewCategory/>}></Route> 
+      <Route path="/viewGroup" element={<ViewGroup/>}></Route>  
+      <Route path="/viewGroup/:id" element={<ViewGroup/>}></Route>  
+      <Route path="/pay" element={<Pay/>}></Route>   
       </Route>
 
       <Route path="/admin" element={<AdminLayout/>}>
@@ -40,6 +53,12 @@ function App(){
       <Route path="/admin/addproduct" element={<AddProduct/>}></Route>
       <Route path="/admin/manageCategory" element={<ManageCategory/>}></Route>
       <Route path="/admin/updateCategory/:id" element={<UpdateCategory/>}></Route>
+      <Route path="/admin/addgroup" element={<AddGroup/>}></Route>
+      <Route path="/admin/updateGroup/:id" element={<UpdateGroup/>}></Route>
+      <Route path="/admin/manageGroup" element={<ManageGroup/>}></Route>
+      <Route path="/admin/addnotes" element={<AddNotes/>}></Route>
+      <Route path="/admin/managenotes" element={<ManageNotes/>}></Route>
+      <Route path="/admin/updateNotes/:id" element={<UpdateNotes/>}></Route>
       </Route>
     </Routes>
      <ToastContainer />

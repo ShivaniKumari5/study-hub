@@ -1,32 +1,45 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import CategoryServices from "../../../services/CategoryServices";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import CloudinaryServices from "../../../services/CloudinaryServices";
+import GroupServices from "../../../services/GroupServices";
 
-
-function AddCategory(){
-  const [name,setName]= useState("");
-  const [image,setImage]=useState();
+function AddGroup(){
+  const [groupname,setGroupName]= useState("");
   const [description,setDescription]=useState("");
+  const [image,setImage]=useState();
+  const [cate,setCate]=useState("");
+  const [data,setData]=useState([]);
 
+   useEffect(()=>{
+      fetchData();
+    },[])
+
+  const fetchData=async()=>{
+       let cateData=  await CategoryServices.All()
+       setData(cateData);     
+      }
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
 
     let url = await CloudinaryServices.uploadImage(image);
     console.log(url);
-    
+
     let data={
-      name:name,
+      groupname:groupname,
       description:description,
-      image:url
+      image:url,
+      cate
     }
-    // console.log(data);
+    console.log(data);
     
-    let result=await CategoryServices.Add(data);
+    let result=await GroupServices.Add(data);
+    console.log(result);
+    
     if(result==1){
-      toast.success("Category added successfully");
+      toast.success("Group  added successfully");
     }
     else{
       toast.error("DB error");
@@ -41,7 +54,7 @@ function AddCategory(){
       <div className="container">
         <div className="row d-flex justify-content-center text-center">
           <div className="col-lg-8">
-            <h1>Add Category</h1>
+            <h1>Add Group</h1>
             {/* <p className="mb-0">
               Odio et unde deleniti. Deserunt numquam exercitationem. Officiis
               quo odio sint voluptas consequatur ut a odio voluptatem. Sit
@@ -58,8 +71,8 @@ function AddCategory(){
           <li>
            <Link to="/">Home</Link>
           </li>
-          <li className="current">Add Category
-            <Link to="/admin/addcategory"></Link>
+          <li className="current">Add Group
+            <Link to="/admin/addgroup"></Link>
           </li>
         </ol>
       </div>
@@ -90,15 +103,15 @@ function AddCategory(){
                   name="name"
                   placeholder="Name"
                   required=""
-                  value={name}
+                  value={groupname}
                   onChange={(e)=>{
-                    setName(e.target.value)
+                    setGroupName(e.target.value)
                   }}
                   
                 />
               </div>
 
-                <div className="col-md-8 ">
+               <div className="col-md-8 ">
                 <input
                   type="file"
                   className="form-control"
@@ -112,6 +125,23 @@ function AddCategory(){
                   
                 />
               </div>
+
+                 <div className="col-md-8 ">
+              
+                <select className="form-control" value={cate} onChange={(el)=>{
+                  setCate(el.target.value)
+                }}>
+                  <option >choose one</option>
+                  {
+                    data.map((el)=>{
+                     return  <option value={el.id}>{el.categoryName}</option>
+                    } 
+                    )
+                  }
+                </select>
+              </div>
+
+
               <div className="col-md-8">
                 <textarea
                   name="description"
@@ -145,4 +175,4 @@ function AddCategory(){
 
     )
 }
-export default AddCategory;
+export default AddGroup;

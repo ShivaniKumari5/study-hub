@@ -65,13 +65,13 @@ function ManageCategory(){
         <div className="col-lg-8 ">
           {/* form here */}
 
-
-          <table className="table">
+ <table class="table">
   <thead>
     <tr>
       <th scope="col">Sr No.</th>
       <th scope="col">Category Name</th>
       <th scope="col">Description</th>
+      <th scope="col">Image</th>
       <th scope="col">Delete</th>
       <th scope="col">Edit</th>
       <th scope="col">Status</th>
@@ -85,6 +85,7 @@ function ManageCategory(){
           <th scope="row">1</th>
           <td>{el.categoryName}</td>
           <td>{el.description}</td>
+          <td><img width={50} src={el.Image} alt="" /></td>
           <td><button onClick={(id)=>{
             cateDelete(el.id);
           }}  className="btn btn-danger">Delete</button></td>

@@ -1,32 +1,71 @@
-import { useState } from "react";
-import CategoryServices from "../../../services/CategoryServices";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import GroupServices from "../../../services/GroupServices";
 import CloudinaryServices from "../../../services/CloudinaryServices";
+import CategoryServices from "../../../services/CategoryServices";
 
 
-function AddCategory(){
-  const [name,setName]= useState("");
-  const [image,setImage]=useState();
+
+function UpdateGroup(){
+  const [groupName,setGroupName]= useState("");
   const [description,setDescription]=useState("");
+  const [imageUrl,setImageUrl]=useState("");
+  const [image,setImage]=useState();
 
+  const [cate,setCate]=useState("");
+  const [data,setData]=useState([]);
+
+  const { id } = useParams();
+  const nav =useNavigate()
+  
+
+  useEffect(()=>{
+    fetchData(),
+    fetchDataCategory()
+  },[]);
+
+
+   const fetchDataCategory=async()=>{
+         let categoryData=  await CategoryServices.All();
+         setData(categoryData);     
+        }
+
+  const fetchData = async()=>{
+    let data= await GroupServices.single(id);
+    console.log(data);
+    setGroupName(data.groupName);
+    setDescription(data.description);
+    setImageUrl(data.image);
+    setCate(data.cate);
+
+  }
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
 
-    let url = await CloudinaryServices.uploadImage(image);
-    console.log(url);
-    
-    let data={
-      name:name,
-      description:description,
-      image:url
+    // let url = await CloudinaryServices.uploadImage(image);
+    // console.log(url);
+
+    let url =imageUrl;
+    if(!!image){
+    url= await CloudinaryServices.uploadImage(image);
     }
-    // console.log(data);
+
+    let data={
+      groupname:groupName,
+      description:description,
+      image:url,
+      cate
     
-    let result=await CategoryServices.Add(data);
+    }
+    console.log(data);
+    
+    let result=await GroupServices.Update(data,id);
     if(result==1){
-      toast.success("Category added successfully");
+      toast.success("Group updated successfully");
+      nav("/admin/manageGroup");
     }
     else{
       toast.error("DB error");
@@ -41,7 +80,7 @@ function AddCategory(){
       <div className="container">
         <div className="row d-flex justify-content-center text-center">
           <div className="col-lg-8">
-            <h1>Add Category</h1>
+            <h1>Update Group</h1>
             {/* <p className="mb-0">
               Odio et unde deleniti. Deserunt numquam exercitationem. Officiis
               quo odio sint voluptas consequatur ut a odio voluptatem. Sit
@@ -58,8 +97,8 @@ function AddCategory(){
           <li>
            <Link to="/">Home</Link>
           </li>
-          <li className="current">Add Category
-            <Link to="/admin/addcategory"></Link>
+          <li className="current">Update Group
+            <Link to="/admin/updateGroup"></Link>
           </li>
         </ol>
       </div>
@@ -90,15 +129,14 @@ function AddCategory(){
                   name="name"
                   placeholder="Name"
                   required=""
-                  value={name}
+                  value={groupName}
                   onChange={(e)=>{
-                    setName(e.target.value)
+                    setGroupName(e.target.value)
                   }}
                   
                 />
               </div>
-
-                <div className="col-md-8 ">
+              <div className="col-md-8 ">
                 <input
                   type="file"
                   className="form-control"
@@ -112,6 +150,24 @@ function AddCategory(){
                   
                 />
               </div>
+               
+
+               <div className="col-md-8 ">
+              
+                <select className="form-control" value={cate} onChange={(el)=>{
+                  setCate(el.target.value)
+                }}>
+                  <option >choose one</option>
+                  {
+                    data.map((el)=>{
+                     return  <option value={el.id}>{el.categoryName}</option>
+                    } 
+                    )
+                  }
+                </select>
+              </div>
+
+                
               <div className="col-md-8">
                 <textarea
                   name="description"
@@ -145,4 +201,4 @@ function AddCategory(){
 
     )
 }
-export default AddCategory;
+export default UpdateGroup;

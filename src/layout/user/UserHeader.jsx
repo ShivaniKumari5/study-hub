@@ -31,12 +31,14 @@ function UserHeader(){
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li>
-            <Link to="/courses">Courses</Link>
+
+           <li>
+            <Link to="/ViewCategory">ViewCategory</Link>
           </li>
           <li>
-            <Link to="/trainers">Trainers</Link>
+            <Link to="/ViewGroup">ViewGroup</Link>
           </li>
+         
           <li>
             <Link to="/events">Events</Link>
           </li>
@@ -86,24 +88,44 @@ function UserHeader(){
               </li>
             </ul>
           </li>
-          {
-             isLogin?<li><button onClick={logout} className="btn btn-danger"></button></li>:
+         
+          {/* {
+             isLogin?<li><button onClick={logout} className="btn btn-danger">Logout</button></li>:
           <li>
             <Link to="/login">Login</Link>
           </li>
 
-          }
-         
+          } */}
           
           <li>
             <Link to="/contact">Contact</Link>
           </li>
+           {
+             isLogin?<li><button onClick={logout} className="btn btn-getstarted">Logout</button></li>:
+          <li>
+            <Link  to="/login" >Login</Link>
+          </li>
+
+          }
+
+
+
         </ul>
+        
         <i className="mobile-nav-toggle d-xl-none bi bi-list" />
       </nav>
-      <Link className="btn-getstarted" to="/courses">
+      {/* <Link className="btn-getstarted" to="/courses">
         Get Started
-      </Link>
+      </Link> */}
+
+      
+            {/* {
+             isLogin?<li><button onClick={logout} className="btn btn-danger">Logout</button></li>:
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+
+          } */}
     </div>
   </header>
         

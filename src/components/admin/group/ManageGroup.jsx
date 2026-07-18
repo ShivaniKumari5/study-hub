@@ -1,0 +1,134 @@
+import { useEffect, useState } from "react";
+import { Link, Links } from "react-router-dom";
+import { toast } from "react-toastify";
+import GroupServices from "../../../services/GroupServices";
+import CategoryServices from "../../../services/CategoryServices";
+function ManageGroup() {
+  const [data, setData] = useState([]);
+  const [catedata, setCategoryData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+    fetchDataCate();
+  }, [])
+
+  const fetchDataCate = async (req, res) => {
+    let categoryData = await CategoryServices.All();
+    console.log(categoryData);
+    setCategoryData(categoryData);
+  }
+
+
+  const fetchData = async () => {
+    let groupData = await GroupServices.All()
+    console.log(groupData);
+    setData(groupData);
+  }
+
+
+  const groupDelete = async (id) => {
+    console.log(id);
+    let res = await GroupServices.Delete(id);
+    if (res == 1) {
+      toast.success("Group  deleted");
+      fetchData()
+    }
+    else {
+      toast.error("Group not deleted");
+    }
+  }
+  return (
+    <main className="main">
+      {/* Page Title */}
+      <div className="page-title" data-aos="fade">
+        <div className="heading">
+          <div className="container">
+            <div className="row d-flex justify-content-center text-center">
+              <div className="col-lg-8">
+                <h1>Manage Group</h1>
+                {/* <p className="mb-0">
+              Odio et unde deleniti. Deserunt numquam exercitationem. Officiis
+              quo odio sint voluptas consequatur ut a odio voluptatem. Sit
+              dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit
+              quaerat ipsum dolorem.
+            </p> */}
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav className="breadcrumbs">
+          <div className="container">
+            <ol>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li className="current">Manage Group</li>
+            </ol>
+          </div>
+        </nav>
+      </div>
+      {/* End Page Title */}
+      {/* Contact Section */}
+      <section id="contact" className="contact section">
+
+        <div className="container" data-aos="fade-up" data-aos-delay={100}>
+          <div className="row gy-4  justify-content-center align-items-center">
+
+            <div className="col-lg-8 mt-5 ">
+              {/* form here */}
+              <table className="table "  >
+                <thead>
+                  <tr>
+                    <th scope="col">Sr No.</th>
+                    <th scope="col">Group Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    data.map((el) => {
+                      return <>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>{el.groupName}</td>
+                          <td>{el.description}</td>
+                          <td><img width={50} src={el.Image} alt="" /></td>
+                          {/* <td>{el.cateId}</td> */}
+                          <td>{
+                            catedata?.find((c) => c.id == el.cateId)?.categoryName
+                          }
+                          </td>
+                          <td><button onClick={(id) => {
+                            groupDelete(el.id);
+                          }} className="btn btn-danger">Delete</button></td>
+
+                          <td><Link to={"/admin/updateGroup/" + el.id} className="btn btn-primary">Update</Link></td>
+
+                          <td>{el.status ? "Active" : "Block"}</td>
+                        </tr>
+                      </>
+                    })
+                  }
+
+
+
+                </tbody>
+              </table>
+
+            </div>
+            {/* End Contact Form */}
+          </div>
+        </div>
+      </section>
+      {/* /Contact Section */}
+    </main>
+
+
+  )
+}
+export default ManageGroup;

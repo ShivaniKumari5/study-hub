@@ -42,10 +42,13 @@ class UserServices {
       obj.address= data.address;
       let data2 ={...obj};
 
+      console.log(data2);
+      
+
       await setDoc(doc(db,dbPath,uid),data2);
       AuthServices.setData(data2,uid);
       return 1;
-      
+
     }catch(error){
       console.log(error);
       toast.error(error.message);
