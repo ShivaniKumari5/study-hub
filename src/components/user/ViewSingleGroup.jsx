@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import GroupServices from "../../services/GroupServices";
-function ViewGroup() {
-  const [data, setData] = useState([]);
+function ViewSingleGroup() {
+  const [data, setData] = useState();
 
   const {id}=useParams()
 
   const fetchData = async () => {
-    const res = await GroupServices.All(id);
+    const res = await GroupServices.single(id);
+    console.log(res);
+    
     setData(res);
   }
   useEffect(() => {
@@ -23,7 +25,7 @@ function ViewGroup() {
             <div className="container">
               <div className="row d-flex justify-content-center text-center">
                 <div className="col-lg-8">
-                  <h1>View Group</h1>
+                  <h1>View singleGroup</h1>
                   <p className="mb-0">
                     Odio et unde deleniti. Deserunt numquam exercitationem. Officiis
                     quo odio sint voluptas consequatur ut a odio voluptatem. Sit
@@ -47,25 +49,9 @@ function ViewGroup() {
         </div>
         {/* End Page Title */}
         {/* Courses Section */}
+
+
 {/* 
-<div className="container mt-5">
-  <div className="row g-4">
-    {data.map((el, index) => (
-      <div className="col-md-4 mb-3" key={index}>
-        <div className="card h-100" style={{ width: "18rem" }}>
-          <img src={el.Image} className="card-img-top" alt={el.groupName} />
-
-          <div className="card-body">
-            <h5 className="card-title">{el.groupName}</h5>
-            <p className="card-text">{el.description}</p>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-</div> */}
-
-
 <div className="container py-5">
   <div className="row g-4">
     {data.map((el) => (
@@ -93,7 +79,6 @@ function ViewGroup() {
             <p className="card-text text-muted flex-grow-1">
               {el.description}
             </p>
-            <Link to={"/viewSingleGroup/" + el.id}  className="btn btn-primary">View Details</Link>
 
             <div className="d-flex gap-3 mt-3">
               <Link to="">
@@ -118,12 +103,43 @@ function ViewGroup() {
     ))}
   </div>
 </div>
-  
+   */}
+
+
+   <div className="container py-5">
+  {data && (
+    <div className="row justify-content-center">
+      <div className="col-lg-6">
+        <div className="card shadow-sm border-0">
+          <img
+            src={data.Image}
+            className="card-img-top"
+            alt={data.groupName}
+            style={{
+              height: "300px",
+              objectFit: "cover",
+            }}
+          />
+
+          <div className="card-body">
+            <h3 className="card-title">{data.groupName}</h3>
+            <p className="card-text text-muted">
+              {data.description}
+            </p>
+            <Link to=""  className="btn btn-primary">Join</Link>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+</div>
 </main>
 
     </>
   )
 
+
 }
 
-export default ViewGroup;
+export default ViewSingleGroup;

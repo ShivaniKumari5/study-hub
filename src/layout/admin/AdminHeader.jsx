@@ -80,6 +80,23 @@ function AdminHeader(){
       </ul>
     </li>
 
+
+     <li className="dropdown">
+      <a href="#">
+        <span>Notes</span>
+        <i className="bi bi-chevron-down toggle-dropdown"></i>
+      </a>
+
+      <ul>
+        <li>
+          <Link to="/admin/addnotes">Add Notes</Link>
+        </li>
+        <li>
+          <Link to="/admin/managenotes">Manage Notes</Link>
+        </li>
+      </ul>
+    </li>
+
         
         
           {/* <li>

@@ -1,18 +1,15 @@
 import { addDoc, collection, deleteDoc, getDocs, doc, getDoc, updateDoc, query, where } from "firebase/firestore";
 import { db } from "../Firebase";
-import { GroupModel } from "../model/GroupModel";
-const dbPath = 'group';
-class GroupServices {
+import { GroupMemberModel } from "../model/GroupMemberModel";
+const dbPath = 'groupMember';
+
+class GroupMemberServices {
 
   async Add(Data) {
     try {
-      let obj = new GroupModel();
+      let obj = new GroupMemberModel();
       // console.log(obj);
 
-      obj.groupName = Data.groupname,
-        obj.description = Data.description,
-        obj.Image = Data.image,
-        obj.cateId = Data.cate
       await addDoc(collection(db, dbPath), { ...obj });
       return 1;
 
@@ -36,11 +33,11 @@ class GroupServices {
   // update
   async Update(Data, id) {
     try {
-      let obj = new GroupModel();
-      obj.groupName = Data.groupname;
-      obj.description = Data.description;
-      obj.Image = Data.image,
-        obj.cateId = Data.cate,
+      let obj = new GroupMemberModel();
+    //   obj.groupName = Data.groupname;
+    //   obj.description = Data.description;
+    //   obj.Image = Data.image,
+    //     obj.cateId = Data.cate,
 
         await updateDoc(doc(db, dbPath, id), { ...obj });
       return 1;
@@ -63,30 +60,20 @@ class GroupServices {
     }
   }
   // read all
-  async All(id) {
-    try {
-
-      let groupDoc = null
-
-      if (!!id) {
-        groupDoc = await getDocs(query(collection(db, dbPath), where("cateId", "==", id)));
-
-      } else {
-
-        groupDoc = await getDocs(collection(db, dbPath));
+  async All() {
+      try {
+        let grpMemeberDocs = await getDocs(collection(db, dbPath))
+  
+        let grpMemberData = grpMemeberDocs.docs.map((el) => {
+          return { id: el.id, ...el.data() }
+        })
+        return grpMemberData;
+  
+      } catch (error) {
+        console.log(error);
+  
       }
-
-
-      let groupData = groupDoc.docs.map((el) => {
-        return { id: el.id, ...el.data() }
-      })
-      return groupData;
-
-    } catch (error) {
-      console.log(error);
-
     }
-  }
 
 }
-export default new GroupServices;
+export default new GroupMemberServices;

@@ -8,7 +8,6 @@ import CategoryServices from "../../../services/CategoryServices";
 import NotesServices from "../../../services/NotesServices";
 
 
-
 function UpdateNotes(){
   const [description,setDescription]=useState("");
   const [title,setTitle]=useState("");
@@ -21,15 +20,6 @@ function UpdateNotes(){
   const { id } = useParams();
   const nav =useNavigate()
 
-
-  // const [imageUrl,setImageUrl]=useState("");
-  // const [image,setImage]=useState();
-
-  // const [cate,setCate]=useState("");
-  // const [data,setData]=useState([]);
-
-
-  
 
   useEffect(()=>{
     fetchData(),
@@ -55,9 +45,6 @@ function UpdateNotes(){
   const handleSubmit=async(e)=>{
     e.preventDefault();
 
-    // let url = await CloudinaryServices.uploadImage(fileUrl);
-    // console.log(url);
-
     let url =fileUrl;
     if(!!fileUrl){
     url= await CloudinaryServices.uploadImage(fileUrl);
@@ -66,9 +53,8 @@ function UpdateNotes(){
     let data={
      title:title,
       description:description,
-      fileUrl,
+      fileUrl:url,
       group
-    
     }
     console.log(data);
     
@@ -90,13 +76,7 @@ function UpdateNotes(){
       <div className="container">
         <div className="row d-flex justify-content-center text-center">
           <div className="col-lg-8">
-            <h1>Update Group</h1>
-            {/* <p className="mb-0">
-              Odio et unde deleniti. Deserunt numquam exercitationem. Officiis
-              quo odio sint voluptas consequatur ut a odio voluptatem. Sit
-              dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit
-              quaerat ipsum dolorem.
-            </p> */}
+            <h1>Update Notes</h1>
           </div>
         </div>
       </div>
@@ -221,8 +201,6 @@ function UpdateNotes(){
   </section>
   {/* /Contact Section */}
 </main>
-
-
-    )
+  )
 }
 export default UpdateNotes;

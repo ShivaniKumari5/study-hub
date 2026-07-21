@@ -47,13 +47,7 @@ function ManageNotes() {
           <div className="container">
             <div className="row d-flex justify-content-center text-center">
               <div className="col-lg-8">
-                <h1>Manage Group</h1>
-                {/* <p className="mb-0">
-              Odio et unde deleniti. Deserunt numquam exercitationem. Officiis
-              quo odio sint voluptas consequatur ut a odio voluptatem. Sit
-              dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit
-              quaerat ipsum dolorem.
-            </p> */}
+                <h1>Manage Notes</h1>
               </div>
             </div>
           </div>
@@ -64,7 +58,7 @@ function ManageNotes() {
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li className="current">Manage Group</li>
+              <li className="current">Manage Notes</li>
             </ol>
           </div>
         </nav>
@@ -100,6 +94,17 @@ function ManageNotes() {
                           <td>{el.title}</td>
                           <td>{el.description}</td>
                           <td><img width={50} src={el.fileUrl} alt="" /></td>
+                          {/* <td>
+  <a
+    href={el.fileUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn btn-primary btn-sm"
+  >
+    View PDF
+  </a>
+</td> */}
+
                           {/* <td>{el.cateId}</td>    group*/ }
                           <td>{
                             grpdata?.find((c) => c.id == el.groupId)?.groupName
@@ -116,9 +121,6 @@ function ManageNotes() {
                       </>
                     })
                   }
-
-
-
                 </tbody>
               </table>
 
@@ -129,8 +131,6 @@ function ManageNotes() {
       </section>
       {/* /Contact Section */}
     </main>
-
-
   )
 }
 export default ManageNotes;
