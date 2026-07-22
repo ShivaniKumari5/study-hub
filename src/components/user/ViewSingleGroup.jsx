@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import GroupServices from "../../services/GroupServices";
+import GroupMemberServices from "../../services/GroupMemberServices";
+import AuthServices from "../../services/AuthServices";
+import NotesServices from "../../services/NotesServices";
 function ViewSingleGroup() {
   const [data, setData] = useState();
 
@@ -9,13 +12,24 @@ function ViewSingleGroup() {
   const fetchData = async () => {
     const res = await GroupServices.single(id);
     console.log(res);
-    
     setData(res);
   }
+
   useEffect(() => {
     fetchData()
   }, []);
 
+  async function joinGroup (){
+    const uid =await AuthServices.getUid();
+    const groupId=id;
+    console.log(uid,groupId);
+    
+      uid:uid,
+      groupId:id
+    }
+    
+    const result= await GroupMemberServices.Add(data);
+  }
   return (
     <>
       <main className="main">
@@ -126,7 +140,8 @@ function ViewSingleGroup() {
             <p className="card-text text-muted">
               {data.description}
             </p>
-            <Link to=""  className="btn btn-primary">Join</Link>
+            {/* <Link to=""  className="btn btn-primary">Join</Link> */}
+            <button className="btn btn-primary" onClick={joinGroup}>Join</button>
 
           </div>
         </div>

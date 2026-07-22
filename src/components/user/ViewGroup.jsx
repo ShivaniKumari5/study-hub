@@ -1,17 +1,30 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import GroupServices from "../../services/GroupServices";
+import GroupMemberServices from "../../services/GroupMemberServices";
+import AuthServices from "../../services/AuthServices";
+
 function ViewGroup() {
   const [data, setData] = useState([]);
+  const [groupMemberData, setgroupMemberData] = useState([]);
 
-  const {id}=useParams()
+  const { id } = useParams()
+  const uid = AuthServices.getUid()
 
   const fetchData = async () => {
     const res = await GroupServices.All(id);
     setData(res);
   }
+  const fetchGroupMemberData = async () => {
+    const result = await GroupMemberServices.All(uid);
+    console.log(result);
+
+    setgroupMemberData(result);
+  }
+
   useEffect(() => {
-    fetchData()
+    fetchData(),
+      fetchGroupMemberData()
   }, []);
 
   return (
@@ -47,7 +60,7 @@ function ViewGroup() {
         </div>
         {/* End Page Title */}
         {/* Courses Section */}
-{/* 
+        {/* 
 <div className="container mt-5">
   <div className="row g-4">
     {data.map((el, index) => (
@@ -66,60 +79,68 @@ function ViewGroup() {
 </div> */}
 
 
-<div className="container py-5">
-  <div className="row g-4">
-    {data.map((el) => (
-      <div
-        className="col-lg-4 col-md-6"
-        key={el._id || el.id}
-        data-aos="fade-up"
-      >
-        <div className="card h-100 shadow-sm border-0">
-          <img
-            src={el.Image}
-            className="card-img-top"
-            alt={el.groupName}
-            style={{
-              height: "250px",
-              objectFit: "cover",
-            }}
-          />
+        <div className="container py-5">
+          <div className="row g-4">
+            {data.map((el) => (
+              <div
+                className="col-lg-4 col-md-6"
+                key={el._id || el.id}
+                data-aos="fade-up"
+              >
+                <div className="card h-100 shadow-sm border-0">
+                  <img
+                    src={el.Image}
+                    className="card-img-top"
+                    alt={el.groupName}
+                    style={{
+                      height: "250px",
+                      objectFit: "cover",
+                    }}
+                  />
 
-          <div className="card-body d-flex flex-column">
-            <h5 className="card-title">
-              {el.groupName}
-            </h5>
+                  <div className="card-body d-flex flex-column">
+                    <h5 className="card-title">
+                      {el.groupName}
+                    </h5>
 
-            <p className="card-text text-muted flex-grow-1">
-              {el.description}
-            </p>
-            <Link to={"/viewSingleGroup/" + el.id}  className="btn btn-primary">View Details</Link>
+                    <p className="card-text text-muted flex-grow-1">
+                      {el.description}
+                    </p>
 
-            <div className="d-flex gap-3 mt-3">
-              <Link to="">
-                <i className="bi bi-facebook fs-5"></i>
-              </Link>
+                    {
+                      groupMemberData.some(e=>e.groupId==el.id)?
+                    <Link to={"/viewSingleGroup/" + el.id} className="btn btn-primary">Open</Link>
+                    :
+                    <Link to={"/viewSingleGroup/" + el.id} className="btn btn-primary">View Details</Link>
 
-              <Link to="">
-                <i className="bi bi-instagram fs-5"></i>
-              </Link>
 
-              <Link to="">
-                <i className="bi bi-twitter-x fs-5"></i>
-              </Link>
+                    }
 
-              <Link to="">
-                <i className="bi bi-linkedin fs-5"></i>
-              </Link>
-            </div>
+                    <div className="d-flex gap-3 mt-3">
+                      <Link to="">
+                        <i className="bi bi-facebook fs-5"></i>
+                      </Link>
+
+                      <Link to="">
+                        <i className="bi bi-instagram fs-5"></i>
+                      </Link>
+
+                      <Link to="">
+                        <i className="bi bi-twitter-x fs-5"></i>
+                      </Link>
+
+                      <Link to="">
+                        <i className="bi bi-linkedin fs-5"></i>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    ))}
-  </div>
-</div>
-  
-</main>
+
+      </main>
 
     </>
   )

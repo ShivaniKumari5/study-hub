@@ -1,16 +1,13 @@
 import { addDoc, collection, deleteDoc, getDocs, doc, getDoc, updateDoc, query, where } from "firebase/firestore";
 import { db } from "../Firebase";
-import { GroupMemberModel } from "../model/GroupMemberModel";
 const dbPath = 'groupMember';
 
 class GroupMemberServices {
 
   async Add(Data) {
     try {
-      let obj = new GroupMemberModel();
-      // console.log(obj);
 
-      await addDoc(collection(db, dbPath), { ...obj });
+      await addDoc(collection(db, dbPath), Data);
       return 1;
 
     } catch (error) {
@@ -33,13 +30,8 @@ class GroupMemberServices {
   // update
   async Update(Data, id) {
     try {
-      let obj = new GroupMemberModel();
-    //   obj.groupName = Data.groupname;
-    //   obj.description = Data.description;
-    //   obj.Image = Data.image,
-    //     obj.cateId = Data.cate,
 
-        await updateDoc(doc(db, dbPath, id), { ...obj });
+      await updateDoc(doc(db, dbPath, id), { ...obj });
       return 1;
 
     } catch (error) {
@@ -60,20 +52,29 @@ class GroupMemberServices {
     }
   }
   // read all
-  async All() {
-      try {
-        let grpMemeberDocs = await getDocs(collection(db, dbPath))
-  
-        let grpMemberData = grpMemeberDocs.docs.map((el) => {
-          return { id: el.id, ...el.data() }
-        })
-        return grpMemberData;
-  
-      } catch (error) {
-        console.log(error);
-  
+  async All(id) {
+    try {
+
+      let groupDoc = null
+
+      if (!!id) {
+        groupDoc = await getDocs(query(collection(db, dbPath), where("uid", "==", id)));
+      } else {
+        groupDoc = await getDocs(collection(db, dbPath));
       }
+
+      // let grpMemeberDocs = await getDocs(collection(db, dbPath))
+
+      let grpMemberData = groupDoc.docs.map((el) => {
+        return { id: el.id, ...el.data() }
+      })
+      return grpMemberData;
+
+    } catch (error) {
+      console.log(error);
+
     }
+  }
 
 }
 export default new GroupMemberServices;

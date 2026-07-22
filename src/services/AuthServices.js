@@ -4,11 +4,14 @@ class AuthServices{
         localStorage.setItem("email",data.email);
         localStorage.setItem("name",data.name);
         localStorage.setItem("userType",data.userType);
-        localStorage.setItem("isLogin",true)
+        localStorage.setItem("isLogin",true);
     }
-
+    getUid(){
+        return localStorage.getItem("uid");
+    }
+  
     getUserType(){
-        localStorage.getItem("userType");
+        return localStorage.getItem("userType");
     }
 
     getIsLogin(){
