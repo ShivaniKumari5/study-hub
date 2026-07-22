@@ -24,6 +24,7 @@ function ViewSingleGroup() {
     const groupId=id;
     console.log(uid,groupId);
     
+    const data={
       uid:uid,
       groupId:id
     }
