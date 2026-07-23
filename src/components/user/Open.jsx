@@ -4,6 +4,7 @@ import NotesServices from "../../services/NotesServices";
 
 function Open() {
   const [data, setData] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
   const { id } = useParams();
 
   const fetchNotes = async () => {
@@ -18,6 +19,9 @@ function Open() {
 
     setData(groupNotes);
 
+    if (groupNotes.length > 0) {
+    setSelectedImage(groupNotes[0]);
+    } 
   }
 
   useEffect(() => {
@@ -57,7 +61,7 @@ function Open() {
           </nav>
         </div>
 
-        <div className="container py-5">
+        {/* <div className="container py-5">
           <div className="row">
             {data.map((el) => (
               <div className="col-lg-4 mb-4" key={el.id}>
@@ -80,7 +84,61 @@ function Open() {
               </div>
             ))}
           </div>
+        </div> */}
+        <div className="container py-5">
+  <div className="row">
+
+    {/* Left Side - Thumbnail List */}
+    <div className="col-md-3">
+      <div
+        className="border rounded p-2"
+        style={{ height: "600px", overflowY: "auto" }}
+      >
+        {data.map((item) => (
+          <img
+            key={item.id}
+            src={item.fileUrl}
+            alt={item.title}
+            onClick={() => setSelectedImage(item)}
+            className={`img-fluid mb-2 rounded ${
+              selectedImage?.id === item.id ? "border border-primary border-3" : ""
+            }`}
+            style={{
+              cursor: "pointer",
+              height: "100px",
+              width: "100%",
+              objectFit: "cover",
+            }}
+          />
+        ))}
+      </div>
+    </div>
+
+    {/* Right Side - Selected Image */}
+    <div className="col-md-9">
+      {selectedImage && (
+        <div className="card shadow border-0">
+          <img
+            src={selectedImage.fileUrl}
+            alt={selectedImage.title}
+            className="card-img-top"
+            style={{
+              height: "500px",
+              objectFit: "contain",
+              background: "#f8f9fa",
+            }}
+          />
+
+          <div className="card-body">
+            <h4>{selectedImage.title}</h4>
+            <p>{selectedImage.description}</p>
+          </div>
         </div>
+      )}
+    </div>
+
+  </div>
+</div>
 
       </main>
 
