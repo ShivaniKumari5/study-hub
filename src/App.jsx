@@ -26,6 +26,7 @@ import AddNotes from "./components/admin/notes/AddNotes";
 import UpdateNotes from "./components/admin/notes/UpdateNotes";
 import ManageNotes from "./components/admin/notes/ManageNotes";
 import ViewSingleGroup from "./components/user/ViewSingleGroup";
+import Open from "./components/user/Open";
 
 function App(){
   return(
@@ -47,6 +48,7 @@ function App(){
       <Route path="/viewGroup/:id" element={<ViewGroup/>}></Route>  
       <Route path="/pay" element={<Pay/>}></Route>   
       <Route path="/viewSingleGroup/:id" element={<ViewSingleGroup/>}></Route>
+      <Route path="/open/:id" element={<Open/>}></Route>
       </Route>
 
       <Route path="/admin" element={<AdminLayout/>}>

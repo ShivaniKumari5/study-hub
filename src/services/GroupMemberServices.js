@@ -31,7 +31,7 @@ class GroupMemberServices {
   async Update(Data, id) {
     try {
 
-      await updateDoc(doc(db, dbPath, id), { ...obj });
+      await updateDoc(doc(db, dbPath, id), Data);
       return 1;
 
     } catch (error) {

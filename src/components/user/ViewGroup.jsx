@@ -109,30 +109,13 @@ function ViewGroup() {
 
                     {
                       groupMemberData.some(e=>e.groupId==el.id)?
-                    <Link to={"/viewSingleGroup/" + el.id} className="btn btn-primary">Open</Link>
+                    <Link to={"/open/"+el.id} className="btn btn-primary">Open</Link>
                     :
                     <Link to={"/viewSingleGroup/" + el.id} className="btn btn-primary">View Details</Link>
 
 
                     }
 
-                    <div className="d-flex gap-3 mt-3">
-                      <Link to="">
-                        <i className="bi bi-facebook fs-5"></i>
-                      </Link>
-
-                      <Link to="">
-                        <i className="bi bi-instagram fs-5"></i>
-                      </Link>
-
-                      <Link to="">
-                        <i className="bi bi-twitter-x fs-5"></i>
-                      </Link>
-
-                      <Link to="">
-                        <i className="bi bi-linkedin fs-5"></i>
-                      </Link>
-                    </div>
                   </div>
                 </div>
               </div>

@@ -119,6 +119,7 @@ function AddNotes(){
                   name="name"
                   placeholder=""
                   required=""
+                  
               
                   onChange={(e)=>{
                     setFileUrl(e.target.files[0]);
@@ -126,8 +127,7 @@ function AddNotes(){
                   
                 />
               </div>
-{/* 
-                 group Id */}
+
                   <div className="col-md-8 ">
               
                 <select className="form-control" value={group} onChange={(el)=>{
