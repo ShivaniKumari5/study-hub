@@ -125,6 +125,7 @@ function AddNotes(){
                   placeholder=""
                   required=""
                   accept=".pdf,application/pdf"
+                  
               
                   onChange={(e)=>{
                     setFileUrl(e.target.files[0]);
