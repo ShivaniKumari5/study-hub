@@ -25,6 +25,11 @@ function AddNotes(){
   const handleSubmit=async(e)=>{
     e.preventDefault();
 
+    if (fileUrl && fileUrl.name && !fileUrl.name.toLowerCase().endsWith('.pdf') && fileUrl.type !== 'application/pdf') {
+      toast.error("Only PDF files (.pdf) are allowed!");
+      return;
+    }
+
     let url = await CloudinaryServices.uploadFile(fileUrl);
     console.log(url);
 
@@ -40,7 +45,7 @@ function AddNotes(){
     console.log(result);
     
     if(result==1){
-      toast.success("Notes  added successfully");
+      toast.success("Notes added successfully");
     }
     else{
       toast.error("DB error");
@@ -119,7 +124,7 @@ function AddNotes(){
                   name="name"
                   placeholder=""
                   required=""
-                  accept=".pdf,image/*"
+                  accept=".pdf,application/pdf"
               
                   onChange={(e)=>{
                     setFileUrl(e.target.files[0]);

@@ -45,13 +45,17 @@ function UpdateNotes(){
   const handleSubmit=async(e)=>{
     e.preventDefault();
 
-    let url =fileUrl;
-    if(!!fileUrl){
-    url= await CloudinaryServices.uploadImage(fileUrl);
+    let url = fileUrl;
+    if(typeof fileUrl === "object" && fileUrl !== null){
+      if (fileUrl.name && !fileUrl.name.toLowerCase().endsWith('.pdf') && fileUrl.type !== 'application/pdf') {
+        toast.error("Only PDF files (.pdf) are allowed!");
+        return;
+      }
+      url = await CloudinaryServices.uploadFile(fileUrl);
     }
 
     let data={
-     title:title,
+      title:title,
       description:description,
       fileUrl:url,
       group
@@ -132,7 +136,7 @@ function UpdateNotes(){
                   className="form-control"
                   name="name"
                   placeholder=""
-                  required=""
+                  accept=".pdf,application/pdf"
               
                   onChange={(e)=>{
                     setFileUrl(e.target.files[0]);
