@@ -25,7 +25,7 @@ function AddNotes(){
   const handleSubmit=async(e)=>{
     e.preventDefault();
 
-    let url = await CloudinaryServices.uploadImage(fileUrl);
+    let url = await CloudinaryServices.uploadFile(fileUrl);
     console.log(url);
 
     let data={
@@ -119,7 +119,7 @@ function AddNotes(){
                   name="name"
                   placeholder=""
                   required=""
-                  
+                  accept=".pdf,image/*"
               
                   onChange={(e)=>{
                     setFileUrl(e.target.files[0]);
