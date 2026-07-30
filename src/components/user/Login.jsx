@@ -105,7 +105,7 @@ function Login(){
                 <div className="sent-message">
                   Your message has been sent. Thank you!
                 </div>
-                <button type="submit">Send Message</button>
+                <button type="submit">Login</button>
               </div>
             </div>
           </form>

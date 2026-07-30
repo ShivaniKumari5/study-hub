@@ -114,6 +114,7 @@ function AddCategory(){
               </div>
               <div className="col-md-8">
                 <textarea
+                className="form-control"
                   name="description"
                   value={description}
                   placeholder="Description"
@@ -122,6 +123,14 @@ function AddCategory(){
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
+                  {/* <textarea
+                  className="form-control"
+                  name="message"
+                  rows={6}
+                  placeholder="Message"
+                  required=""
+                  defaultValue={""}
+                /> */}
               </div>
             
               <div className="col-md-12 text-center">
@@ -130,7 +139,7 @@ function AddCategory(){
                 <div className="sent-message">
                   Your message has been sent. Thank you!
                 </div>
-                <button type="submit">Send Message</button>
+                <button type="submit">Add</button>
               </div>
             </div>
           </form>

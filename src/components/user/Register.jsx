@@ -178,7 +178,7 @@ let imageUrl=await CloudinaryServices.uploadImage(profile);
                 <div className="sent-message">
                   Your message has been sent. Thank you!
                 </div>
-                <button type="submit">Send Message</button>
+                <button type="submit">Register</button>
               </div>
             </div>
           </form>

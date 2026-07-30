@@ -178,6 +178,7 @@ function UpdateNotes(){
                 
               <div className="col-md-8">
                 <textarea
+                className="form-control"
                   name="description"
                   value={description}
                   placeholder="Description"
@@ -194,7 +195,7 @@ function UpdateNotes(){
                 <div className="sent-message">
                   Your message has been sent. Thank you!
                 </div>
-                <button type="submit">Send Message</button>
+                <button type="submit">Update</button>
               </div>
             </div>
           </form>
