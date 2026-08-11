@@ -1,12 +1,14 @@
 import axios from "axios";
 const cloudName="khctin6n"
 const preset="recatImg"
+import { toast } from "react-toastify";
+
 
 class CloudinaryServices{
     async uploadImage(file){
         try{
             let formData=new FormData();
-            formData.append("file",image);
+            formData.append("file",file);
             formData.append("upload_preset",preset);
             let url = await axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, formData);
             return (url.data.secure_url);

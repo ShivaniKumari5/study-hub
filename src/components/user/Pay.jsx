@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 const Pay = () => {
 
-    const [price, setprice] = useState(0)
+    const [price, setprice] = useState();
 
     const el={
         price:467

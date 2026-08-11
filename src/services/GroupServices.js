@@ -12,7 +12,9 @@ class GroupServices {
       obj.groupName = Data.groupname,
         obj.description = Data.description,
         obj.Image = Data.image,
-        obj.cateId = Data.cate
+        obj.cateId = Data.cate,
+        obj.groupType= Data.groupType,
+        obj.price = Data.price,
       await addDoc(collection(db, dbPath), { ...obj });
       return 1;
 
@@ -41,6 +43,8 @@ class GroupServices {
       obj.description = Data.description;
       obj.Image = Data.image,
         obj.cateId = Data.cate,
+        obj.groupType= Data.groupType,
+        obj.price = Data.price;
 
         await updateDoc(doc(db, dbPath, id), { ...obj });
       return 1;

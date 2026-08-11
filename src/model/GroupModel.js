@@ -5,5 +5,7 @@ export class GroupModel{
     createdAt= new Date;
     Image="";
     cateId="";
+    groupType = "unpaid";
+    price = 0;
 
 }
