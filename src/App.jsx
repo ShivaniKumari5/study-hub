@@ -27,6 +27,7 @@ import UpdateNotes from "./components/admin/notes/UpdateNotes";
 import ManageNotes from "./components/admin/notes/ManageNotes";
 import ViewSingleGroup from "./components/user/ViewSingleGroup";
 import Open from "./components/user/Open";
+import AddMeeting from "./components/admin/groupmeeting/AddMeeting";
 
 function App(){
   return(
@@ -63,6 +64,7 @@ function App(){
       <Route path="/admin/addnotes" element={<AddNotes/>}></Route>
       <Route path="/admin/managenotes" element={<ManageNotes/>}></Route>
       <Route path="/admin/updateNotes/:id" element={<UpdateNotes/>}></Route>
+      <Route path="/admin/addmeeting" element={<AddMeeting/>}></Route>
       </Route>
     </Routes>
      <ToastContainer />

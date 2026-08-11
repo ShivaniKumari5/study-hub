@@ -104,10 +104,13 @@ function Open() {
           <nav className="breadcrumbs">
             <div className="container">
               <ol>
+                
                 <li>
                   <Link to="/">Home</Link>
                 </li>
                 <li className="current">View Notes</li>
+                <li ><i class="bi bi-camera-video fs-3"></i></li>
+                
               </ol>
             </div>
           </nav>
