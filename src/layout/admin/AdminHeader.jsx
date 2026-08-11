@@ -129,6 +129,23 @@ function AdminHeader(){
       </ul>
     </li>
 
+     <li className="dropdown">
+      <a href="#">
+        <span>Meetings</span>
+        <i className="bi bi-chevron-down toggle-dropdown"></i>
+      </a>
+
+      <ul>
+        <li>
+          <Link to="/admin/addmeeting">Add Meeting</Link>
+        </li>
+        <li>
+          <Link to="/admin/managemeeting">Manage Meetings</Link>
+        </li>
+      </ul>
+    </li>
+
+
 
 
 

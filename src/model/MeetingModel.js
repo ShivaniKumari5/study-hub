@@ -1,13 +1,12 @@
 export class MeetingModel {
-    // categoryName="";
-    // description="";
-    // status=true;
-    // Image="";
+    title = "";
+    description = "";
     groupId = "";
     meetingLink = "";
     meetingDate = "";
     meetingTime = "";
     status = true;
     updatedAt = "";
-    createdAt = new Date;
+    createdAt = new Date();
 }
+
