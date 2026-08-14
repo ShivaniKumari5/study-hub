@@ -21,7 +21,7 @@ import UpdateGroup from "./components/admin/group/UpdateGroup";
 import ManageGroup from "./components/admin/group/ManageGroup";
 import ViewCategory from "./components/user/ViewCategory";
 import ViewGroup from "./components/user/ViewGroup";
-import Pay from "./components/user/Pay";
+// import Pay from "./components/user/Pay";
 import AddNotes from "./components/admin/notes/AddNotes";
 import UpdateNotes from "./components/admin/notes/UpdateNotes";
 import ManageNotes from "./components/admin/notes/ManageNotes";
@@ -48,7 +48,7 @@ function App(){
       <Route path="/viewCategory" element={<ViewCategory/>}></Route> 
       <Route path="/viewGroup" element={<ViewGroup/>}></Route>  
       <Route path="/viewGroup/:id" element={<ViewGroup/>}></Route>  
-      <Route path="/pay" element={<Pay/>}></Route>   
+      {/* <Route path="/pay" element={<Pay/>}></Route>    */}
       <Route path="/viewSingleGroup/:id" element={<ViewSingleGroup/>}></Route>
       <Route path="/open/:id" element={<Open/>}></Route>
       </Route>

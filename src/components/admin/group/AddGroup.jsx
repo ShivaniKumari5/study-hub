@@ -29,6 +29,14 @@ function AddGroup() {
     let url = await CloudinaryServices.uploadImage(image);
     console.log(url);
 
+    if(price <0){
+      console.log("enter valid amount");
+      
+    }
+    else{
+      price:price
+    }
+
     let data = {
       groupname: groupname,
       description: description,
@@ -158,6 +166,7 @@ function AddGroup() {
                     </select>
                   </div>
                   {groupType === "paid" && (
+                    
                     <div className="col-md-8">
                       <input
                         type="number"
