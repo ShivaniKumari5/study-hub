@@ -196,10 +196,11 @@ function ViewSingleGroup() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [paying, setPaying] = useState(false);
+  const [isMember, setIsMember] = useState(false);
 
 
   // --------------------------------
-  // Get Group
+  // Get Group & Member Status
   // --------------------------------
 
   const fetchData = async () => {
@@ -224,10 +225,21 @@ function ViewSingleGroup() {
     }
   };
 
+  const checkMemberStatus = async () => {
+    const uid = AuthServices.getUid();
+    if (uid && id) {
+      const members = await GroupMemberServices.All(uid);
+      if (members && members.some((e) => String(e.groupId) === String(id))) {
+        setIsMember(true);
+      }
+    }
+  };
+
 
   useEffect(() => {
 
     fetchData();
+    checkMemberStatus();
 
   }, [id]);
 
@@ -254,6 +266,7 @@ function ViewSingleGroup() {
       if (result === 1) {
 
         toast.success("You joined the group successfully!");
+        setIsMember(true);
 
       } else {
 
@@ -622,27 +635,33 @@ function ViewSingleGroup() {
                 )}
 
 
-                {/* Join Button */}
+                {/* Join / Open Button */}
 
-                <button
-                  className="btn btn-primary"
-                  onClick={joinGroup}
-                  disabled={paying}
-                >
+                {isMember ? (
+                  <Link to={"/open/" + data.id} className="btn btn-success">
+                    Open Group
+                  </Link>
+                ) : (
+                  <button
+                    className="btn btn-primary"
+                    onClick={joinGroup}
+                    disabled={paying}
+                  >
 
-                  {paying
+                    {paying
 
-                    ? "Opening Payment..."
+                      ? "Opening Payment..."
 
-                    : data.groupType === "paid"
+                      : data.groupType === "paid"
 
-                      ? `Pay ₹${data.price} & Join`
+                        ? `Pay ₹${data.price} & Join`
 
-                      : "Join Free"
+                        : "Join Free"
 
-                  }
+                    }
 
-                </button>
+                  </button>
+                )}
 
 
               </div>

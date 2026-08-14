@@ -17,10 +17,12 @@ function ViewGroup() {
     setData(res);
   }
   const fetchGroupMemberData = async () => {
-    const result = await GroupMemberServices.All(uid);
-    console.log(result);
-
-    setgroupMemberData(result);
+    const currentUid = AuthServices.getUid();
+    if (currentUid) {
+      const result = await GroupMemberServices.All(currentUid);
+      console.log("Group member data:", result);
+      setgroupMemberData(result || []);
+    }
   }
 
   useEffect(() => {
@@ -61,12 +63,17 @@ function ViewGroup() {
 
     } else {
 
-        await GroupMemberServices.Add({
+        const result = await GroupMemberServices.Add({
             uid: uid,
             groupId: group.id
         });
 
-        toast.success("Joined group successfully!");
+        if (result === 1) {
+            toast.success("Joined group successfully!");
+            await fetchGroupMemberData();
+        } else {
+            toast.error("Unable to join group");
+        }
     }
 };
 
@@ -114,6 +121,7 @@ const handlePayment = async (uid, group) => {
 
             if (result === 1) {
                 toast.success("You joined the group!");
+                await fetchGroupMemberData();
             } else {
                 toast.error("Payment successful but joining failed");
             }
