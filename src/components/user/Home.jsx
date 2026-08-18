@@ -27,7 +27,7 @@ function Home(){
   </section>
   {/* /Hero Section */}
   {/* About Section */}
-  <section id="about" className="about section">
+  {/* <section id="about" className="about section">
     <div className="container">
       <div className="row gy-4">
         <div
@@ -76,10 +76,10 @@ function Home(){
         </div>
       </div>
     </div>
-  </section>
+  </section> */}
   {/* /Linkbout Section */}
   {/* Counts Section */}
-  <section id="counts" className="section counts light-background">
+  {/* <section id="counts" className="section counts light-background">
     <div className="container" data-aos="fade-up" data-aos-delay={100}>
       <div className="row gy-4">
         <div className="col-lg-3 col-md-6">
@@ -92,9 +92,9 @@ function Home(){
             />
             <p>Students</p>
           </div>
-        </div>
+        </div> */}
         {/* End Stats Item */}
-        <div className="col-lg-3 col-md-6">
+        {/* <div className="col-lg-3 col-md-6">
           <div className="stats-item text-center w-100 h-100">
             <span
               data-purecounter-start={0}
@@ -104,9 +104,9 @@ function Home(){
             />
             <p>Courses</p>
           </div>
-        </div>
+        </div> */}
         {/* End Stats Item */}
-        <div className="col-lg-3 col-md-6">
+        {/* <div className="col-lg-3 col-md-6">
           <div className="stats-item text-center w-100 h-100">
             <span
               data-purecounter-start={0}
@@ -116,9 +116,9 @@ function Home(){
             />
             <p>Events</p>
           </div>
-        </div>
+        </div> */}
         {/* End Stats Item */}
-        <div className="col-lg-3 col-md-6">
+        {/* <div className="col-lg-3 col-md-6">
           <div className="stats-item text-center w-100 h-100">
             <span
               data-purecounter-start={0}
@@ -128,80 +128,80 @@ function Home(){
             />
             <p>Trainers</p>
           </div>
-        </div>
+        </div> */}
         {/* End Stats Item */}
-      </div>
+      {/* </div>
     </div>
-  </section>
+  </section> */}
   {/* /Counts Section */}
   {/* Why Us Section */}
-  <section id="why-us" className="section why-us">
+  {/* <section id="why-us" className="section why-us">
     <div className="container">
       <div className="row gy-4">
         <div className="col-lg-4" data-aos="fade-up" data-aos-delay={100}>
           <div className="why-box">
-            <h3>Why Choose Our Products?</h3>
-            <p>
+            <h3>Why Choose Our Products?</h3> */}
+            {/* <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis
               aute irure dolor in reprehenderit Asperiores dolores sed et.
               Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio
               ad corporis.
-            </p>
-            <div className="text-center">
+            </p> */}
+            {/* <div className="text-center">
               <Link to="" className="more-btn">
                 <span>Learn More</span> <i className="bi bi-chevron-right" />
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* End Why Box */}
-        <div className="col-lg-8 d-flex align-items-stretch">
+        {/* <div className="col-lg-8 d-flex align-items-stretch">
           <div className="row gy-4" data-aos="fade-up" data-aos-delay={200}>
             <div className="col-xl-4">
               <div className="icon-box d-flex flex-column justify-content-center align-items-center">
-                <i className="bi bi-clipboard-data" />
-                <h4>Corporis voluptates officia eiusmod</h4>
+                <i className="bi bi-clipboard-data" /> */}
+                {/* <h4>Corporis voluptates officia eiusmod</h4>
                 <p>
                   Consequuntur sunt aut quasi enim aliquam quae harum pariatur
                   laboris nisi ut aliquip
-                </p>
-              </div>
-            </div>
+                </p> */}
+              {/* </div>
+            </div> */}
             {/* End Icon Box */}
-            <div className="col-xl-4" data-aos="fade-up" data-aos-delay={300}>
-              <div className="icon-box d-flex flex-column justify-content-center align-items-center">
-                <i className="bi bi-gem" />
-                <h4>Ullamco laboris ladore pan</h4>
+            {/* <div className="col-xl-4" data-aos="fade-up" data-aos-delay={300}> */}
+              {/* <div className="icon-box d-flex flex-column justify-content-center align-items-center"> */}
+                {/* <i className="bi bi-gem" /> */}
+                {/* <h4>Ullamco laboris ladore pan</h4>
                 <p>
                   Excepteur sint occaecat cupidatat non proident, sunt in culpa
                   qui officia deserunt
-                </p>
-              </div>
-            </div>
+                </p> */}
+              {/* </div> */}
+            {/* </div> */}
             {/* End Icon Box */}
-            <div className="col-xl-4" data-aos="fade-up" data-aos-delay={400}>
+            {/* <div className="col-xl-4" data-aos="fade-up" data-aos-delay={400}>
               <div className="icon-box d-flex flex-column justify-content-center align-items-center">
-                <i className="bi bi-inboxes" />
-                <h4>Labore consequatur incidid dolore</h4>
+                <i className="bi bi-inboxes" /> */}
+                {/* <h4>Labore consequatur incidid dolore</h4>
                 <p>
                   Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut
                   maiores omnis facere
-                </p>
-              </div>
-            </div>
+                </p> */}
+              {/* </div>
+            </div> */}
             {/* End Icon Box */}
-          </div>
-        </div>
-      </div>
+  {/* //         </div> */}
+       {/* </div>
+       </div>
     </div>
-  </section>
+   </section> */}
   {/* /Why Us Section */}
   {/* Features Section */}
-  <section id="features" className="features section">
+  {/* <section id="features" className="features section">
     <div className="container">
-      <div className="row gy-4">
-        <div
+      <div className="row gy-4"> */}
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={100}
@@ -214,9 +214,9 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-        <div
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={200}
@@ -229,9 +229,9 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-        <div
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={300}
@@ -244,9 +244,9 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-        <div
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={400}
@@ -259,9 +259,9 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-        <div
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={500}
@@ -274,9 +274,9 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-        <div
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={600}
@@ -289,9 +289,9 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-        <div
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={700}
@@ -304,9 +304,9 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-        <div
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={800}
@@ -319,9 +319,9 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-        <div
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={900}
@@ -334,9 +334,9 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-        <div
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={1000}
@@ -349,9 +349,9 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-        <div
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={1100}
@@ -364,9 +364,9 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-        <div
+        {/* <div
           className="col-lg-3 col-md-4"
           data-aos="fade-up"
           data-aos-delay={1200}
@@ -379,23 +379,23 @@ function Home(){
               </Link>
             </h3>
           </div>
-        </div>
+        </div> */}
         {/* End Feature Item */}
-      </div>
+      {/* </div>
     </div>
-  </section>
+  </section> */}
   {/* /Features Section */}
   {/* Courses Section */}
-  <section id="courses" className="courses section">
+  {/* <section id="courses" className="courses section"> */}
     {/* Section Title */}
-    <div className="container section-title" data-aos="fade-up">
+    {/* <div className="container section-title" data-aos="fade-up">
       <h2>Courses</h2>
       <p>Popular Courses</p>
-    </div>
+    </div> */}
     {/* End Section Title */}
-    <div className="container">
-      <div className="row">
-        <div
+    {/* <div className="container">
+      <div className="row"> */}
+        {/* <div
           className="col-lg-4 col-md-6 d-flex align-items-stretch"
           data-aos="zoom-in"
           data-aos-delay={100}
@@ -438,9 +438,9 @@ function Home(){
               </div>
             </div>
           </div>
-        </div>{" "}
+        </div>{" "} */}
         {/* End Course Item*/}
-        <div
+        {/* <div
           className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0"
           data-aos="zoom-in"
           data-aos-delay={200}
@@ -483,9 +483,9 @@ function Home(){
               </div>
             </div>
           </div>
-        </div>{" "}
+        </div>{" "} */}
         {/* End Course Item*/}
-        <div
+        {/* <div
           className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0"
           data-aos="zoom-in"
           data-aos-delay={300}
@@ -528,17 +528,17 @@ function Home(){
               </div>
             </div>
           </div>
-        </div>{" "}
+        </div>{" "} */}
         {/* End Course Item*/}
-      </div>
+      {/* </div>
     </div>
-  </section>
+  </section> */}
   {/* /Courses Section */}
   {/* Trainers Index Section */}
-  <section id="trainers-index" className="section trainers-index">
+  {/* <section id="trainers-index" className="section trainers-index">
     <div className="container">
-      <div className="row">
-        <div
+      <div className="row"> */}
+        {/* <div
           className="col-lg-4 col-md-6 d-flex"
           data-aos="fade-up"
           data-aos-delay={100}
@@ -572,9 +572,9 @@ function Home(){
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* End Team Member */}
-        <div
+        {/* <div
           className="col-lg-4 col-md-6 d-flex"
           data-aos="fade-up"
           data-aos-delay={200}
@@ -608,9 +608,9 @@ function Home(){
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* End Team Member */}
-        <div
+        {/* <div
           className="col-lg-4 col-md-6 d-flex"
           data-aos="fade-up"
           data-aos-delay={300}
@@ -644,11 +644,11 @@ function Home(){
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* End Team Member */}
-      </div>
+      {/* </div>
     </div>
-  </section>
+  </section> */}
   {/* /Trainers Index Section */}
 </main>
 
