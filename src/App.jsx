@@ -4,7 +4,6 @@ import Home from "./components/user/Home";
 import Contact from "./components/user/Contact";
 import About from "./components/user/About";
 import Trainers from "./components/user/Trainers";
-import Event from "./components/user/Event";
 import Pricing from "./components/user/Pricing";
 import Courses from "./components/user/Courses";
 import Login from "./components/user/Login";
@@ -29,6 +28,7 @@ import ViewSingleGroup from "./components/user/ViewSingleGroup";
 import Open from "./components/user/Open";
 import AddMeeting from "./components/admin/groupmeeting/AddMeeting";
 import ManageMeeting from "./components/admin/groupmeeting/ManageMeeting";
+import ViewDoubt from "./components/admin/doubt/ViewDoubt";
 
 function App(){
   return(
@@ -40,7 +40,6 @@ function App(){
       <Route path="/contact" element={<Contact/>}></Route>
       <Route path="/about" element={<About/>}></Route>
       <Route path="/trainers" element={<Trainers/>}></Route>
-      <Route path="/events" element={<Event/>}></Route>
       <Route path="/pricing" element={<Pricing/>}></Route>
       <Route path="/courses"element={<Courses/>}></Route>
       <Route path="/login" element={<Login/>}></Route>
@@ -67,6 +66,10 @@ function App(){
       <Route path="/admin/updateNotes/:id" element={<UpdateNotes/>}></Route>
       <Route path="/admin/addmeeting" element={<AddMeeting/>}></Route>
       <Route path="/admin/managemeeting" element={<ManageMeeting/>}></Route>
+
+      <Route path="/admin/viewdoubt" element={<ViewDoubt/>}></Route>
+
+      
       </Route>
     </Routes>
      <ToastContainer />

@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import NotesServices from "../../services/NotesServices";
 import MeetingServices from "../../services/MeetingServices";
+import DoubtServices from "../../services/DoubtServices";
+import AuthServices from "../../services/AuthServices";
+import GroupServices from "../../services/GroupServices";
+import { toast } from "react-toastify";
 
 function Open() {
   const [data, setData] = useState([]);
@@ -9,6 +13,11 @@ function Open() {
   const [selectedNote, setSelectedNote] = useState(null);
   const [previewModalNote, setPreviewModalNote] = useState(null);
   const [activeTab, setActiveTab] = useState("notes"); // 'notes' | 'meetings'
+
+  const [askDoubtModal, setAskDoubtModal] = useState(false);
+  const [doubt, setDoubt] = useState("");
+
+  const [group, setGroup] = useState(null);
   const { id } = useParams();
 
   const fetchNotes = async () => {
@@ -27,8 +36,8 @@ function Open() {
     const meetingData = await MeetingServices.All();
     const groupMeetings = meetingData
       ? meetingData.filter(
-          (m) => String(m.groupId) === String(id) || String(m.group) === String(id)
-        )
+        (m) => String(m.groupId) === String(id) || String(m.group) === String(id)
+      )
       : [];
 
     setMeetings(groupMeetings);
@@ -37,7 +46,13 @@ function Open() {
   useEffect(() => {
     fetchNotes();
     fetchMeetings();
+    fetchGroup();
   }, [id]);
+
+  const fetchGroup = async () => {
+  const groupData = await GroupServices.single(id);
+  setGroup(groupData);
+};
 
   const getPdfUrl = (url) => {
     if (!url) return "";
@@ -113,6 +128,38 @@ function Open() {
       return { label: "Completed / Past", badgeClass: "bg-secondary text-white" };
     }
   };
+  // doubt handling
+  const handleSubmitDoubt=async(e)=>{
+    e.preventDefault();
+
+     if (!doubt.trim()) {
+    alert("Please enter your doubt.");
+    return;
+  }
+
+   const doubtData = {
+    groupId: id,
+    groupName:  group?.groupName || "",
+    studentId: AuthServices.getUid(),
+    studentName: AuthServices.getName(),
+    status: "pending",
+    MessageStudent: doubt.trim(),
+    MessageAdmin: "",
+  };
+   let ans = await DoubtServices.Add(doubtData);
+   console.log(ans);
+
+   if (ans == 1) {
+         toast.success("Doubt  posted successfully");
+         setDoubt("");
+    setAskDoubtModal(false);
+       }
+       else {
+         toast.error("DB error");
+       }
+   
+
+  }
 
   return (
     <>
@@ -156,6 +203,14 @@ function Open() {
                   >
                     <i className="bi bi-camera-video me-1"></i> Live Meetings ({meetings.length})
                   </button>
+
+
+                  <button
+                    className="btn btn-outline-primary"
+                    onClick={() => setAskDoubtModal(true)}
+                  >
+                    <i className="bi bi-question-circle me-1"></i> Ask Doubt
+                  </button>
                 </div>
               </div>
             </div>
@@ -188,11 +243,10 @@ function Open() {
                           <div
                             key={item.id}
                             onClick={() => setSelectedNote(item)}
-                            className={`p-3 mb-2 rounded border transition-all ${
-                              isSelected
-                                ? "border-primary bg-white shadow-sm"
-                                : "bg-white border-light"
-                            }`}
+                            className={`p-3 mb-2 rounded border transition-all ${isSelected
+                              ? "border-primary bg-white shadow-sm"
+                              : "bg-white border-light"
+                              }`}
                             style={{ cursor: "pointer", transition: "all 0.2s" }}
                           >
                             <div className="d-flex align-items-center gap-3">
@@ -347,9 +401,8 @@ function Open() {
                   return (
                     <div className="col-lg-6" key={item.id || index}>
                       <div
-                        className={`card h-100 shadow-sm border ${
-                          isToday ? "border-success bg-success-subtle" : "border-light"
-                        }`}
+                        className={`card h-100 shadow-sm border ${isToday ? "border-success bg-success-subtle" : "border-light"
+                          }`}
                       >
                         <div className="card-body p-4 d-flex flex-column">
                           <div className="d-flex justify-content-between align-items-start mb-3">
@@ -381,9 +434,8 @@ function Open() {
                               href={item.meetingLink}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className={`btn w-100 py-2 fw-bold d-flex align-items-center justify-content-center gap-2 ${
-                                isToday ? "btn-success btn-lg shadow" : "btn-primary"
-                              }`}
+                              className={`btn w-100 py-2 fw-bold d-flex align-items-center justify-content-center gap-2 ${isToday ? "btn-success btn-lg shadow" : "btn-primary"
+                                }`}
                             >
                               <i className="bi bi-camera-video-fill fs-5"></i>
                               Join Meeting Now
@@ -458,6 +510,91 @@ function Open() {
                     </button>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ASK DOUBT MODAL */}
+        {askDoubtModal && (
+          <div
+            className="modal show d-block"
+            tabIndex="-1"
+            style={{
+              backgroundColor: "rgba(0,0,0,0.6)",
+              zIndex: 1055,
+            }}
+          >
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content shadow-lg border-0">
+
+                <div className="modal-header">
+                  <h5 className="modal-title">
+                    <i className="bi bi-question-circle text-primary me-2"></i>
+                    Ask Your Doubt
+                  </h5>
+
+                  <button
+                    type="button"
+                    className="btn-close"
+                    onClick={() => setAskDoubtModal(false)}
+                  ></button>
+                </div>
+
+                <form onSubmit={handleSubmitDoubt}
+                  // onSubmit={(e) => {
+                  //   e.preventDefault();
+
+                  //   console.log("Doubt:", doubt);
+                  //   console.log("Group ID:", id);
+
+                  //   // TODO: Call your API here
+
+                  //   setDoubt("");
+                  //   setAskDoubtModal(false);
+                  // }}
+                >
+                  <div className="modal-body">
+
+                    <div className="mb-3">
+                      <label className="form-label fw-bold">
+                        Your Doubt
+                      </label>
+
+                      <textarea
+                        className="form-control"
+                        rows="6"
+                        placeholder="Write your doubt here..."
+                        value={doubt}
+                        onChange={(e) => setDoubt(e.target.value)}
+                        required
+                      ></textarea>
+                    </div>
+
+                  </div>
+
+                  <div className="modal-footer">
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={() => {
+                        setDoubt("");
+                        setAskDoubtModal(false);
+                      }}
+                    >
+                      Cancel
+                    </button>
+
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                    >
+                      <i className="bi bi-send me-1"></i>
+                      Post Doubt
+                    </button>
+                  </div>
+                </form>
+
               </div>
             </div>
           </div>

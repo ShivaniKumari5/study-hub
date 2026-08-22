@@ -43,7 +43,7 @@ function AddGroup() {
       groupType,
       image: url,
       cate,
-      price,
+      price: groupType === "paid" ? Number(price) : 0,
 
     }
     console.log(data);
@@ -190,7 +190,7 @@ function AddGroup() {
                       placeholder="Description"
                       rows={8}
                       cols={101}
-                      value={description}
+                      // value={description}
                       onChange={(e) => setDescription(e.target.value)}
                     />
                   </div>

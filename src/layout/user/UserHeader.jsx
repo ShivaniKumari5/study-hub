@@ -40,7 +40,7 @@ function UserHeader() {
               </li>
 
               <li>
-                <Link to="/events">Events</Link>
+                <Link to="/register">Register</Link>
               </li>
 
 
