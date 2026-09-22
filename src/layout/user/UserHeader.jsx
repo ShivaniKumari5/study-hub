@@ -42,12 +42,15 @@ function UserHeader() {
               <li>
                 <Link to="/register">Register</Link>
               </li>
+              <li>
+                <Link to="/viewreply">ViewReply</Link>
+              </li>
 
 
               {/* <li>
             <Link to="/pricing">Pricing</Link>
           </li> */}
-              <li className="dropdown">
+              {/* <li className="dropdown">
                 <Link to="/dropdown">
                   <span>Dropdown</span>{" "}
                   <i className="bi bi-chevron-down toggle-dropdown" />
@@ -89,7 +92,7 @@ function UserHeader() {
                     <Link to="">Dropdown 4</Link>
                   </li>
                 </ul>
-              </li>
+              </li> */}
 
               {/* {
              isLogin?<li><button onClick={logout} className="btn btn-danger">Logout</button></li>:

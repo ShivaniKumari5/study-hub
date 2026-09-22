@@ -1,45 +1,23 @@
-import { useEffect, useState } from "react";
-import { Link, Links } from "react-router-dom";
-import { toast } from "react-toastify";
-import GroupServices from "../../../services/GroupServices";
-import CategoryServices from "../../../services/CategoryServices";
-function ManageGroup() {
-  const [data, setData] = useState([]);
-  const [catedata, setCategoryData] = useState([]);
 
-  useEffect(() => {
-    fetchData();
-    fetchDataCate();
-  }, [])
-
-  const fetchDataCate = async (req, res) => {
-    let categoryData = await CategoryServices.All();
-    console.log(categoryData);
-    setCategoryData(categoryData);
-  }
-
+import { Link } from "react-router-dom";
+import { useState,useEffect } from "react";
+function ViewGroupDetails() {
+      const [data, setData] = useState([]);
+      useEffect(() => {
+              fetchData();
+          }, [])
 
   const fetchData = async () => {
-    let groupData = await GroupServices.All()
-    console.log(groupData);
-    setData(groupData);
-  }
+ 
+         let uid= AuthServices.getUid()
+         let data = await DoubtServices.All(uid);
+         setData(data);
+     }
 
 
-  const groupDelete = async (id) => {
-    console.log(id);
-    let res = await GroupServices.Delete(id);
-    if (res == 1) {
-      toast.success("Group  deleted");
-      fetchData()
-    }
-    else {
-      toast.error("Group not deleted");
-    }
-  }
-  const viewDetails= async(id)=>{
 
-  }
+
+ 
   return (
     <main className="main">
       {/* Page Title */}
@@ -65,7 +43,7 @@ function ManageGroup() {
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li className="current">Manage Group</li>
+              <li className="current">View Group Details</li>
             </ol>
           </div>
         </nav>
@@ -86,13 +64,9 @@ function ManageGroup() {
                     <th scope="col">Group Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Image</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Delete</th>
+                    {/* <th scope="col">Category</th> */}
                    
 
-                    <th scope="col">Edit</th>
-                     <th scope="col">ViewDetails</th>
-                    <th scope="col">Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -105,20 +79,11 @@ function ManageGroup() {
                           <td>{el.description}</td>
                           <td><img width={50} src={el.Image} alt="" /></td>
                           {/* <td>{el.cateId}</td> */}
-                          <td>{
+                          {/* <td>{
                             catedata?.find((c) => c.id == el.cateId)?.categoryName
-                          }
-                          </td>
-                          <td><button onClick={(id) => {
-                            groupDelete(el.id);
-                          }} className="btn btn-danger">Delete</button></td>
-
-                          <td><Link to={"/admin/updateGroup/" + el.id} className="btn btn-primary">Update</Link></td>
-
-                          <td><Link  to ={"/admin/viewgroupdetails/"+el.id}
-                           className="btn btn-primary">ViewDetails</Link></td>
-
-                          <td>{el.status ? "Active" : "Block"}</td>
+                          } 
+                          </td>*/}
+                          
                         </tr>
                       </>
                     })
@@ -140,4 +105,4 @@ function ManageGroup() {
 
   )
 }
-export default ManageGroup;
+export default ViewGroupDetails;

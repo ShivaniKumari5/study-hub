@@ -29,6 +29,8 @@ import Open from "./components/user/Open";
 import AddMeeting from "./components/admin/groupmeeting/AddMeeting";
 import ManageMeeting from "./components/admin/groupmeeting/ManageMeeting";
 import ViewDoubt from "./components/admin/doubt/ViewDoubt";
+import ViewReply from "./components/user/ViewReply";
+import ViewGroupDetails from "./components/admin/group/ViewGroupDetails";
 
 function App(){
   return(
@@ -50,6 +52,7 @@ function App(){
       {/* <Route path="/pay" element={<Pay/>}></Route>    */}
       <Route path="/viewSingleGroup/:id" element={<ViewSingleGroup/>}></Route>
       <Route path="/open/:id" element={<Open/>}></Route>
+      <Route path="/viewreply" element={<ViewReply/>}></Route>
       </Route>
 
       <Route path="/admin" element={<AdminLayout/>}>
@@ -60,6 +63,7 @@ function App(){
       <Route path="/admin/updateCategory/:id" element={<UpdateCategory/>}></Route>
       <Route path="/admin/addgroup" element={<AddGroup/>}></Route>
       <Route path="/admin/updateGroup/:id" element={<UpdateGroup/>}></Route>
+      <Route path="/admin/viewgroupdetails/:id" element={<ViewGroupDetails/>}></Route>
       <Route path="/admin/manageGroup" element={<ManageGroup/>}></Route>
       <Route path="/admin/addnotes" element={<AddNotes/>}></Route>
       <Route path="/admin/managenotes" element={<ManageNotes/>}></Route>

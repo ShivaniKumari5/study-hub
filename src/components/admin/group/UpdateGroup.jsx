@@ -176,7 +176,6 @@ function UpdateGroup(){
                   placeholder="Description"
                   rows={8}
                   cols={101}
-                  value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>

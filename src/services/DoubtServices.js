@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, getDocs, doc, getDoc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, getDocs, doc, getDoc, updateDoc, query, where } from "firebase/firestore";
 import { db } from "../Firebase";
 import { DoubtModel } from "../model/DoubtModel";
 const dbPath = 'doubt';
@@ -26,20 +26,44 @@ class DoubtServices {
         }
     }
     // read all
-    async All() {
+
+      async All(id) {
         try {
-            let doubtDoc = await getDocs(collection(db, dbPath))
-
-            let doubtData = doubtDoc.docs.map((el) => {
-                return { id: el.id, ...el.data() }
-            })
-            return doubtData;
-
+    
+          let groupDoc = null
+    
+          if (!!id) {
+            groupDoc = await getDocs(query(collection(db, dbPath), where("studentId", "==", id)));
+          } else {
+            groupDoc = await getDocs(collection(db, dbPath));
+          }
+    
+          // let grpMemeberDocs = await getDocs(collection(db, dbPath))
+    
+          let grpMemberData = groupDoc.docs.map((el) => {
+            return { id: el.id, ...el.data() }
+          })
+          return grpMemberData;
+    
         } catch (error) {
-            console.log(error);
-
+          console.log(error);
+    
         }
-    }
+      }
+    // async All() {
+    //     try {
+    //         let doubtDoc = await getDocs(collection(db, dbPath))
+
+    //         let doubtData = doubtDoc.docs.map((el) => {
+    //             return { id: el.id, ...el.data() }
+    //         })
+    //         return doubtData;
+
+    //     } catch (error) {
+    //         console.log(error);
+
+    //     }
+    // }
 
     // u update
     //  async Update(Data,id){
