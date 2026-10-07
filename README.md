@@ -91,13 +91,13 @@ The application includes several security measures:
 ![Notes Preview](screenshots/notes-preview.png)
 
 ### Meetings
-![Meetings](screenshots/meetings.png)
+![Meetings](screenshots/meetingpage.png)
 
 ### Ask Doubts
-![Ask doubts](screenshots/askDoubts.png)
+![Ask doubts](screenshots/askdoubts.png)
 
 ### Doubts reply
-![Ask doubts](screenshots/replyDoubts.png)
+![Ask doubts](screenshots/replydoubts.png)
 
 ### Payment
 ![payment](screenshots/payment.png)
