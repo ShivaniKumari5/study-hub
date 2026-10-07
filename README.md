@@ -87,13 +87,6 @@ Recommended screenshots:
 * Doubt and reply interface
 * Student enrollment/payment flow
 
-Example:
-
-```md
-![Admin Dashboard](screenshots/admin-dashboard.png)
-![Student Portal](screenshots/student-portal.png)
-```
-
 ---
 
 # 🚀 Getting Started
