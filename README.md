@@ -72,39 +72,35 @@ The application includes several security measures:
 
 ---
 
-## 📸 Screenshots
 
-Screenshots can be added here after deployment.
-
-Recommended screenshots:
 ## 📸 Screenshots
 
 ### Admin Dashboard
-![Admin Dashboard](screenshorts/admin-dashboard.png)
+![Admin Dashboard](screenshots/admin-dashboard.png)
 
 ### Category Management
-![Category Management](screenshorts/category-management.png)
+![Category Management](screenshots/category-management.png)
 
 ### Group Management
-![Group Management](screenshorts/group-management.png)
+![Group Management](screenshots/group-management.png)
 
 ### Student Group View
-![Student Group](screenshorts/student-group.png)
+![Student Group](screenshots/student-group.png)
 
 ### Notes Preview
-![Notes Preview](screenshorts/notes-preview.png)
+![Notes Preview](screenshots/notes-preview.png)
 
 ### Meetings
-![Meetings](screenshorts/meetings.png)
+![Meetings](screenshots/meetings.png)
 
 ### Ask Doubts
-![Ask doubts](screenshorts/askDoubts.png)
+![Ask doubts](screenshots/askDoubts.png)
 
 ### Doubts reply
-![Ask doubts](screenshorts/replyDoubts.png)
+![Ask doubts](screenshots/replyDoubts.png)
 
 ### Payment
-![payment](screenshorts/payment.png)
+![payment](screenshots/payment.png)
 
 ---
 
