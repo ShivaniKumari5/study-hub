@@ -77,15 +77,34 @@ The application includes several security measures:
 Screenshots can be added here after deployment.
 
 Recommended screenshots:
+## 📸 Screenshots
 
-* Admin dashboard
-* Category management
-* Study group management
-* Student group page
-* Notes/PDF preview
-* Meeting page
-* Doubt and reply interface
-* Student enrollment/payment flow
+### Admin Dashboard
+![Admin Dashboard](screenshorts/admin-dashboard.png)
+
+### Category Management
+![Category Management](screenshorts/category-management.png)
+
+### Group Management
+![Group Management](screenshorts/group-management.png)
+
+### Student Group View
+![Student Group](screenshorts/student-group.png)
+
+### Notes Preview
+![Notes Preview](screenshorts/notes-preview.png)
+
+### Meetings
+![Meetings](screenshorts/meetings.png)
+
+### Ask Doubts
+![Ask doubts](screenshorts/askDoubts.png)
+
+### Doubts reply
+![Ask doubts](screenshorts/replyDoubts.png)
+
+### Payment
+![payment](screenshorts/payment.png)
 
 ---
 
