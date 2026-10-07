@@ -27,7 +27,7 @@ class NotesServices {
   // getting single id
   async single(id) {
     try {
-      let Docs = await getDoc(doc, (db, dbPath, id));
+      let Docs = await getDoc(doc(db, dbPath, id));
       return Docs.data();
 
     } catch (error) {
@@ -65,22 +65,37 @@ class NotesServices {
   }
 
   // update
+  // async Update(Data, id) {
+  //   try {
+  //     let obj = new NotesModel();
+  //     obj.title = Data.title;
+  //     obj.description = Data.description;
+  //     obj.fileUrl = Data.fileUrl,
+  //       obj.groupId = Data.group,
+
+  //       await updateDoc(doc(db, dbPath, id), { ...obj });
+  //     return 1;
+
+  //   } catch (error) {
+  //     console.log(error);
+
+  //   }
+  // }
+
   async Update(Data, id) {
-    try {
-      let obj = new NotesModel();
-      obj.title = Data.title;
-      obj.description = Data.description;
-      obj.fileUrl = Data.fileUrl,
-        obj.groupId = Data.group,
-
-        await updateDoc(doc(db, dbPath, id), { ...obj });
-      return 1;
-
-    } catch (error) {
-      console.log(error);
-
-    }
+  try {
+    await updateDoc(doc(db, dbPath, id), {
+      title: Data.title,
+      description: Data.description,
+      fileUrl: Data.fileUrl,
+      groupId: Data.group
+    });
+    return 1;
+  } catch (error) {
+    console.log(error);
+    return 0;
   }
+}
 
 }
 export default new NotesServices;

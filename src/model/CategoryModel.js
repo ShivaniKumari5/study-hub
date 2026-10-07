@@ -3,5 +3,5 @@ export class CategoryModel{
     description="";
     status=true;
     Image="";
-    createdAt=new Date;
+    createdAt=new Date();
 }

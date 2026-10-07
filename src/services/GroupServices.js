@@ -36,24 +36,40 @@ class GroupServices {
   }
 
   // update
+  // async Update(Data, id) {
+  //   try {
+  //     let obj = new GroupModel();
+  //     obj.groupName = Data.groupname;
+  //     obj.description = Data.description;
+  //     obj.Image = Data.image,
+  //       obj.cateId = Data.cate,
+  //       obj.groupType= Data.groupType,
+  //       obj.price = Data.price;
+
+  //       await updateDoc(doc(db, dbPath, id), { ...obj });
+  //     return 1;
+
+  //   } catch (error) {
+  //     console.log(error);
+
+  //   }
+  // }
   async Update(Data, id) {
-    try {
-      let obj = new GroupModel();
-      obj.groupName = Data.groupname;
-      obj.description = Data.description;
-      obj.Image = Data.image,
-        obj.cateId = Data.cate,
-        obj.groupType= Data.groupType,
-        obj.price = Data.price;
-
-        await updateDoc(doc(db, dbPath, id), { ...obj });
-      return 1;
-
-    } catch (error) {
-      console.log(error);
-
-    }
+  try {
+    await updateDoc(doc(db, dbPath, id), {
+      groupName: Data.groupname,
+      description: Data.description,
+      Image: Data.image,
+      cateId: Data.cate,
+      groupType: Data.groupType,
+      price: Data.price
+    });
+    return 1;
+  } catch (error) {
+    console.log(error);
+    return 0;
   }
+}
 
   // delete 
   async Delete(id) {

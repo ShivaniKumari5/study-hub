@@ -118,7 +118,8 @@ function ManageGroup() {
                           <td><Link  to ={"/admin/viewgroupdetails/"+el.id}
                            className="btn btn-primary">ViewDetails</Link></td>
 
-                          <td>{el.status ? "Active" : "Block"}</td>
+                       
+                          <td>{el.status ? "Active" : "Block"}</td>  
                         </tr>
                       </>
                     })

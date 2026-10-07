@@ -1,8 +1,8 @@
 export class GroupModel{
     groupName= "";
     description="";
-    status= "active";
-    createdAt= new Date;
+    status=  true;
+    createdAt= new Date();
     Image="";
     cateId="";
     groupType = "unpaid";

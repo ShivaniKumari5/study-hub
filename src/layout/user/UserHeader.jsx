@@ -38,100 +38,30 @@ function UserHeader() {
               <li>
                 <Link to="/ViewGroup">ViewGroup</Link>
               </li>
+              <li><Link to="/viewreply">ViewReply</Link></li>
 
-              <li>
-                <Link to="/register">Register</Link>
-              </li>
-              <li>
-                <Link to="/viewreply">ViewReply</Link>
-              </li>
+              {!isLogin && (
+                <li><Link to="/register">Register</Link></li>     
+              )}
 
+              
+              {isLogin ? (
+                <li><button onClick={logout}>Logout</button></li>
+              ) : (
+                <li><Link to="/login">Login</Link></li>
+              )}
 
-              {/* <li>
-            <Link to="/pricing">Pricing</Link>
-          </li> */}
-              {/* <li className="dropdown">
-                <Link to="/dropdown">
-                  <span>Dropdown</span>{" "}
-                  <i className="bi bi-chevron-down toggle-dropdown" />
-                </Link>
-                <ul>
-                  <li>
-                    <Link to="">Dropdown 1</Link>
-                  </li>
-                  <li className="dropdown">
-                    <Link to="">
-                      <span>Deep Dropdown</span>{" "}
-                      <i className="bi bi-chevron-down toggle-dropdown" />
-                    </Link>
-                    <ul>
-                      <li>
-                        <Link to="">Deep Dropdown 1</Link>
-                      </li>
-                      <li>
-                        <Link to="">Deep Dropdown 2</Link>
-                      </li>
-                      <li>
-                        <Link to="">Deep Dropdown 3</Link>
-                      </li>
-                      <li>
-                        <Link to="">Deep Dropdown 4</Link>
-                      </li>
-                      <li>
-                        <Link to="">Deep Dropdown 5</Link>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <Link to="">Dropdown 2</Link>
-                  </li>
-                  <li>
-                    <Link to="">Dropdown 3</Link>
-                  </li>
-                  <li>
-                    <Link to="">Dropdown 4</Link>
-                  </li>
-                </ul>
-              </li> */}
-
-              {/* {
-             isLogin?<li><button onClick={logout} className="btn btn-danger">Logout</button></li>:
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-
-          } */}
-
-              {
-                isLogin ? <li><button onClick={logout} className="btn btn-getstarted">Logout</button></li> :
-                  <li >
-                    <Link className="btn btn-getstarted" to="/login" >Login</Link>
-                  </li>
-
-              }
-
+           
               <li>
                 <Link to="/contact">Contact</Link>
               </li>
-
-
+            
 
             </ul>
 
             <i className="mobile-nav-toggle d-xl-none bi bi-list" />
           </nav>
-          {/* <Link className="btn-getstarted" to="/courses">
-        Get Started
-      </Link> */}
-
-
-          {/* {
-             isLogin?<li><button onClick={logout} className="btn btn-danger">Logout</button></li>:
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-
-          } */}
+        
         </div>
       </header>
 

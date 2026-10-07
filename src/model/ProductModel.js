@@ -3,5 +3,5 @@ export class ProductModel{
     price=0;
     description="";
     status=true;
-    manufactureDate=new Date;
+    manufactureDate=new Date();
 }

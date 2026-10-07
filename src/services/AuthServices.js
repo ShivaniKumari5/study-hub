@@ -1,4 +1,6 @@
 class AuthServices{
+
+    
     setData(data,id){
         localStorage.setItem("uid",id);
         localStorage.setItem("email",data.email);
@@ -18,7 +20,7 @@ class AuthServices{
     }
 
     getIsLogin(){
-        return localStorage.getItem("isLogin");
+        return localStorage.getItem("isLogin") === "true";
     }
 
     clearData(){

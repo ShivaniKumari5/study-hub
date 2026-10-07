@@ -53,7 +53,7 @@ class CategoryServices{
    
    async single(id){
     try{
-      let Docs= await getDoc(doc,(db,dbPath,id));
+      let Docs= await getDoc(doc(db,dbPath,id));
       return Docs.data();
 
     }catch(error){
@@ -62,20 +62,36 @@ class CategoryServices{
    }
    
    // u update
-   async Update(Data,id){
-    try{
-      let obj = new CategoryModel();
-      obj.categoryName=Data.name;
-      obj.description=Data.description;
-      obj.Image=Data.image;
-      await updateDoc(doc(db,dbPath,id),{...obj});
-      return 1;
+  //  async Update(Data,id){
+  //   try{
+  //     let obj = new CategoryModel();
+  //     obj.categoryName=Data.name;
+  //     obj.description=Data.description;
+  //     obj.Image=Data.image;
+  //     await updateDoc(doc(db,dbPath,id),{...obj});
+  //     return 1;
 
-    }catch(error){
-      console.log(error);
+  //   }catch(error){
+  //     console.log(error);
       
-    }
-   }
+  //   }
+  //  }
+
+
+ async Update(Data, id) {
+  try {
+    await updateDoc(doc(db, dbPath, id), {
+      categoryName: Data.name,
+      description: Data.description,
+      Image: Data.image,
+      updatedAt: new Date().toISOString()
+    });
+    return 1;
+  } catch (error) {
+    console.log(error);
+    return 0;
+  }
+}  
  
 }
 export default new CategoryServices;

@@ -7,5 +7,5 @@ export class UserModel{
     
     userType=2;
     status=true;
-    createdAt=new Date;
+    createdAt=new Date();
 }

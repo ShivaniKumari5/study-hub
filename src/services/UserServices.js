@@ -26,6 +26,7 @@ class UserServices {
       return userData.userType;
     } catch (err) {
       console.log(err);
+      return 0;
     }
 
   }

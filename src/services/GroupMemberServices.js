@@ -6,10 +6,11 @@ class GroupMemberServices {
 
   async Add(Data) {
     try {
-
-      await addDoc(collection(db, dbPath), Data);
-      return 1;
-
+    await addDoc(collection(db, dbPath), {
+      ...Data,
+      joinedAt: new Date().toISOString()
+    });
+    return 1;
     } catch (error) {
       console.log(error);
       return 0;
