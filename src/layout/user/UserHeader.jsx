@@ -41,14 +41,14 @@ function UserHeader() {
               <li><Link to="/viewreply">ViewReply</Link></li>
 
               {!isLogin && (
-                <li><Link to="/register">Register</Link></li>     
+                <li><Link to="/register" className="btn btn-getstarted">Register</Link></li>     
               )}
 
               
               {isLogin ? (
-                <li><button onClick={logout}>Logout</button></li>
+                <li><button onClick={logout} className="btn btn-getstarted">Logout</button></li>
               ) : (
-                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/login" className="btn btn-getstarted">Login</Link></li>
               )}
 
            

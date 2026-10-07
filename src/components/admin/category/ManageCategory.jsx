@@ -79,10 +79,10 @@ function ManageCategory(){
   </thead>
   <tbody>
      {
-      Data.map((el)=>{
+      Data.map((el,index)=>{
         return <>
         <tr>
-          <th scope="row">1</th>
+          <th scope="row">{index+1}</th>
           <td>{el.categoryName}</td>
           <td>{el.description}</td>
           <td><img width={50} src={el.Image} alt="" /></td>
