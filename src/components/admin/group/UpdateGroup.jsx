@@ -13,6 +13,10 @@ function UpdateGroup(){
   const [description,setDescription]=useState("");
   const [imageUrl,setImageUrl]=useState("");
   const [image,setImage]=useState();
+    const [price, setPrice] = useState();
+      const [groupType, setGroupType] = useState("");
+
+
 
   const [cate,setCate]=useState("");
   const [data,setData]=useState([]);
@@ -57,7 +61,9 @@ function UpdateGroup(){
       groupname:groupName,
       description:description,
       image:url,
-      cate
+      cate,
+      price:price,
+      groupType:groupType
     
     }
     console.log(data);
@@ -166,6 +172,30 @@ function UpdateGroup(){
                   }
                 </select>
               </div>
+              <div className="col-md-8 ">
+
+                    <select className="form-control" value={groupType} onChange={(el) => {
+                      setGroupType(el.target.value)
+                    }}>
+                      <option value="">Choose</option>
+                      <option value="paid" >Paid</option>
+                      <option value="unpaid"> Unpaid</option>
+                    </select>
+                  </div>
+                  {groupType === "paid" && (
+                    
+                    <div className="col-md-8">
+                      <input
+                        type="number"
+                        className="form-control"
+                        placeholder="Enter group price"
+                        min="1"
+                        value={price}
+                        onChange={(e) => setPrice(Number(e.target.value))}
+                        required
+                      />
+                    </div>
+                  )}
 
                 
               <div className="col-md-8">

@@ -233,7 +233,7 @@ function Dashboard() {
               })}
             </p>
             <h2 className="fw-bold mb-2 text-white">
-              {greeting}, {adminName} 👋
+              {greeting}, {adminName} 
             </h2>
             <p className="mb-0 text-white-50">
               Here's what's happening in your Study Group platform today.

@@ -56,14 +56,19 @@ class GroupServices {
   // }
   async Update(Data, id) {
   try {
-    await updateDoc(doc(db, dbPath, id), {
+    let sendData={
       groupName: Data.groupname,
       description: Data.description,
       Image: Data.image,
       cateId: Data.cate,
       groupType: Data.groupType,
       price: Data.price
-    });
+    }
+
+    console.log(sendData);
+    
+    
+    await updateDoc(doc(db, dbPath, id), sendData );
     return 1;
   } catch (error) {
     console.log(error);
