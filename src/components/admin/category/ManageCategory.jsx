@@ -25,6 +25,7 @@ function ManageCategory(){
       toast.error("Item not deleted");
     }
   }
+  
     return(
         <main className="main">
   {/* Page Title */}

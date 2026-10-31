@@ -353,7 +353,7 @@ function Dashboard() {
                 title="Refresh"
               >
                 <i className="bi bi-arrow-clockwise"></i>
-                
+
               </button>
             </div>
 
@@ -524,10 +524,9 @@ function Dashboard() {
             </div>
           </>
         )}
-        
+
       </div>
     </main>
   );
 }
-
 export default Dashboard;
